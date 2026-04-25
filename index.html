@@ -185,6 +185,35 @@ nav#mainNav a.active::after{
 }
 @media(max-width:600px){.issue-badge{display:none;}}
 
+/* ============================ CLICK CALL-TO-ACTION ============================ */
+.click-cta{
+  font-weight:700;
+  color:var(--text);
+  background:linear-gradient(180deg,
+    transparent 0%,
+    transparent 50%,
+    color-mix(in srgb,var(--c4) 38%,transparent) 50%,
+    color-mix(in srgb,var(--c4) 38%,transparent) 92%,
+    transparent 92%);
+  padding:0 1px;
+  font-style:normal;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.click-cta::before{
+  content:"▸";
+  display:inline-block;
+  margin-right:5px;
+  font-weight:900;
+  color:var(--c4);
+  background:none;
+  animation:clickPulse 2s ease-in-out infinite;
+}
+@keyframes clickPulse{
+  0%,100%{transform:translateX(0);}
+  50%{transform:translateX(2px);}
+}
+
 /* ============================ HERO ============================ */
 .hero{
   position:relative;z-index:2;
@@ -1233,19 +1262,28 @@ input[type=range]{
   border-color:var(--border-strong);
 }
 
-/* DARK CANVASES — where SVG diagrams live (stay dark like workshop viewing windows) */
-.module .anatomy-svg-box,
-.module .bench,
-.module .vis-anatomy-box{
+/* DARK CANVAS — only anatomy widget keeps the workshop look */
+.module .anatomy-svg-box{
   background:var(--canvas);
   border-color:transparent;
 }
-.module .anatomy-svg-box::before,
-.module .bench::before,
-.module .vis-anatomy-box::before{
+.module .anatomy-svg-box::before{
   background-image:
     linear-gradient(rgba(77,236,255,0.05) 1px,transparent 1px),
     linear-gradient(90deg,rgba(77,236,255,0.05) 1px,transparent 1px) !important;
+}
+
+/* LIGHT CANVAS — bench & vis-anatomy on paper background for readability */
+.module .bench,
+.module .vis-anatomy-box{
+  background:#F0E8D0;
+  border-color:var(--border);
+}
+.module .bench::before,
+.module .vis-anatomy-box::before{
+  background-image:
+    linear-gradient(rgba(28,26,44,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(28,26,44,0.05) 1px,transparent 1px) !important;
 }
 
 /* Fig label sits above widget like a caption tab */
@@ -2334,7 +2372,7 @@ input[type=range]{
   </div>
   <div class="module-head reveal">
     <h2 class="module-title"><em>Anatomie</em> de la bête</h2>
-    <p class="module-lead">Huit pièces à connaître. <strong>Clique sur les numéros</strong> pour les identifier.</p>
+    <p class="module-lead">Huit pièces à connaître. <span class="click-cta">Clique sur les numéros</span> pour les identifier.</p>
   </div>
 
   <div class="widget-host reveal"><div class="fig-label">Fig. 01.1</div><div class="widget reveal">
@@ -2410,7 +2448,7 @@ input[type=range]{
       </div>
       <div class="anatomy-info" id="anatomyInfo">
         <h4>Sélectionne une pièce</h4>
-        <p>Clique sur l'un des huit numéros sur le schéma pour découvrir à quoi il sert.</p>
+        <p>Clique sur l'un des <span class="click-cta">huit numéros</span> sur le schéma pour découvrir à quoi il sert.</p>
       </div>
     </div>
   </div></div>
@@ -2420,7 +2458,7 @@ input[type=range]{
       <div class="widget-title">L'inverseur de sens (bouton du manche)</div>
       <div class="widget-meta">3 POSITIONS</div>
     </div>
-    <p class="modes-intro">Juste <strong>au-dessus de la gâchette</strong>, un bouton coulissant qui traverse le manche change le sens de rotation. Trois positions, trois usages. Clique pour voir la perceuse réagir.</p>
+    <p class="modes-intro">Juste <strong>au-dessus de la gâchette</strong>, un bouton coulissant qui traverse le manche change le sens de rotation. Trois positions, trois usages. <span class="click-cta">Clique sur les onglets</span> pour voir la perceuse réagir.</p>
 
     <div class="inv-tabs">
       <button class="inv-tab" data-dir="left" data-hover>← Dévisser</button>
@@ -2567,7 +2605,7 @@ input[type=range]{
       <div class="widget-title">Le sélecteur de vitesse (1 ou 2)</div>
       <div class="widget-meta">2 POSITIONS</div>
     </div>
-    <p class="modes-intro">Sur le <strong>dessus de la perceuse</strong>, un bouton coulissant porte un « 1 » et un « 2 ». Il change la <strong>vitesse maximale</strong> et le couple de la perceuse. Clique sur les onglets pour voir l'effet.</p>
+    <p class="modes-intro">Sur le <strong>dessus de la perceuse</strong>, un bouton coulissant porte un « 1 » et un « 2 ». Il change la <strong>vitesse maximale</strong> et le couple de la perceuse. <span class="click-cta">Clique sur les onglets</span> pour voir l'effet.</p>
 
     <div class="speed-demo">
       <svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg">
@@ -2588,7 +2626,7 @@ input[type=range]{
         <!-- Knob du sélecteur (coulisse entre les deux positions) -->
         <rect id="speedKnob" x="200" y="36" width="38" height="32" rx="6" fill="#FFA726" stroke="#8B5A0F" stroke-width="1"/>
         <!-- Annotation -->
-        <text x="180" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#5F5A6B" letter-spacing="0.18em">DESSUS DE LA PERCEUSE</text>
+        <text x="180" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#5F5A6B" letter-spacing="0.18em">DESSUS · LE CHIFFRE VISIBLE EST LA VITESSE ACTIVE</text>
       </svg>
     </div>
 
@@ -2649,11 +2687,11 @@ input[type=range]{
         <g>
           <rect x="30" y="60" width="140" height="60" rx="14" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
           <rect x="80" y="120" width="38" height="60" rx="8" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="1"/>
-          <rect x="112" y="135" width="10" height="18" rx="2" fill="#FFA726" stroke="#8B5A0F" stroke-width="0.5"/>
+          <rect x="112" y="135" width="10" height="18" rx="2" fill="#D17B05" stroke="#8B5A0F" stroke-width="0.5"/>
           <g>
             <rect id="couple-ring" x="170" y="64" width="32" height="52" rx="4" fill="#F2C878" stroke="#6B4423" stroke-width="1"/>
             <g id="couple-marks" font-size="7" fill="#2C2C2A" text-anchor="middle" font-weight="600" font-family="JetBrains Mono"></g>
-            <rect x="184" y="56" width="4" height="10" fill="#4DECFF"/>
+            <rect x="184" y="56" width="4" height="10" fill="#0A94B5"/>
           </g>
           <rect x="202" y="68" width="24" height="44" rx="3" fill="#888780" stroke="#2C2C2A" stroke-width="0.8"/>
           <line x1="210" y1="72" x2="210" y2="108" stroke="#444441" stroke-width="0.5"/>
@@ -2663,10 +2701,10 @@ input[type=range]{
             <g><rect x="249" y="87" width="16" height="6" fill="#5F5E5A"/><line x1="253" y1="87" x2="253" y2="93" stroke="#2C2C2A" stroke-width="0.4"/><line x1="257" y1="87" x2="257" y2="93" stroke="#2C2C2A" stroke-width="0.4"/><line x1="261" y1="87" x2="261" y2="93" stroke="#2C2C2A" stroke-width="0.4"/></g>
           </g>
           <g transform="translate(305 40)">
-            <circle r="22" fill="#4DECFF" fill-opacity="0.1" stroke="#4DECFF" stroke-width="0.8" stroke-dasharray="3 2"/>
-            <text y="-26" text-anchor="middle" font-size="10" fill="#4DECFF" font-weight="500" font-family="JetBrains Mono">La bague</text>
-            <path d="M -30 10 Q -50 30 -120 35" stroke="#4DECFF" stroke-width="1" fill="none" stroke-dasharray="2 2"/>
-            <path d="M -115 32 L -120 35 L -115 38" stroke="#4DECFF" stroke-width="1" fill="none"/>
+            <circle r="22" fill="#0A94B5" fill-opacity="0.1" stroke="#0A94B5" stroke-width="0.8" stroke-dasharray="3 2"/>
+            <text y="-26" text-anchor="middle" font-size="10" fill="#0A94B5" font-weight="500" font-family="JetBrains Mono">La bague</text>
+            <path d="M -30 10 Q -50 30 -120 35" stroke="#0A94B5" stroke-width="1" fill="none" stroke-dasharray="2 2"/>
+            <path d="M -115 32 L -120 35 L -115 38" stroke="#0A94B5" stroke-width="1" fill="none"/>
           </g>
         </g>
         <g>
@@ -2680,7 +2718,7 @@ input[type=range]{
           <g id="couple-vise-broken" opacity="0"><path d="M 184 214 L 190 208 L 197 214 L 204 208 L 210 214" stroke="#2C2C2A" stroke-width="0.5" fill="#5F5E5A"/></g>
           <g id="couple-vise-cracks" opacity="0"><path d="M 197 216 L 180 232 L 175 250" stroke="#6B4423" stroke-width="1" fill="none"/><path d="M 197 216 L 214 230 L 220 248" stroke="#6B4423" stroke-width="1" fill="none"/></g>
         </g>
-        <g id="couple-click" opacity="0"><text x="150" y="48" font-size="14" fill="#4DECFF" font-weight="500" font-style="italic" font-family="Instrument Serif">clic !</text><path d="M 140 56 L 156 44" stroke="#4DECFF" stroke-width="1.2"/></g>
+        <g id="couple-click" opacity="0"><text x="150" y="48" font-size="14" fill="#0A94B5" font-weight="500" font-style="italic" font-family="Instrument Serif">clic !</text><path d="M 140 56 L 156 44" stroke="#0A94B5" stroke-width="1.2"/></g>
       </svg>
 
       <div class="couple-ctrl">
@@ -2804,20 +2842,20 @@ input[type=range]{
     <div class="widget-head"><div class="widget-title">Place le scotch, puis perce</div></div>
     <div class="bench" id="profBench">
       <svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-        <defs><pattern id="profChev" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M 0 4 L 4 0 L 8 4" stroke="#9DE061" stroke-width="1.5" fill="none"/></pattern></defs>
+        <defs><pattern id="profChev" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M 0 4 L 4 0 L 8 4" stroke="#4B8F1F" stroke-width="1.5" fill="none"/></pattern></defs>
         <rect x="30" y="200" width="310" height="70" fill="#C08552" stroke="#6B4423" stroke-width="0.8"/>
         <path d="M 30 215 Q 185 212 340 218 M 30 235 Q 185 232 340 238 M 30 255 Q 185 252 340 258" stroke="#6B4423" stroke-width="0.5" fill="none" opacity="0.5"/>
         <g>
-          <line x1="340" y1="200" x2="355" y2="200" stroke="#9DE061" stroke-width="1" stroke-dasharray="2 2"/>
-          <line x1="340" y1="245" x2="355" y2="245" stroke="#9DE061" stroke-width="1" stroke-dasharray="2 2"/>
-          <text x="365" y="203" font-size="9" fill="#9DE061" font-family="JetBrains Mono">surface</text>
-          <text x="365" y="248" font-size="9" fill="#9DE061" font-family="JetBrains Mono">cible 30 mm</text>
+          <line x1="340" y1="200" x2="355" y2="200" stroke="#4B8F1F" stroke-width="1" stroke-dasharray="2 2"/>
+          <line x1="340" y1="245" x2="355" y2="245" stroke="#4B8F1F" stroke-width="1" stroke-dasharray="2 2"/>
+          <text x="365" y="203" font-size="9" fill="#4B8F1F" font-family="JetBrains Mono">surface</text>
+          <text x="365" y="248" font-size="9" fill="#4B8F1F" font-family="JetBrains Mono">cible 30 mm</text>
           <rect x="350" y="200" width="4" height="45" fill="url(#profChev)" opacity="0.4"/>
         </g>
         <g id="prof-drill-grp" class="drill-grp">
           <rect x="158" y="5" width="70" height="54" rx="13" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="0.8"/>
           <rect x="218" y="15" width="54" height="22" rx="9" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.8"/>
-          <rect x="228" y="37" width="14" height="10" rx="2" fill="#FFA726" stroke="#8B5A0F" stroke-width="0.5"/>
+          <rect x="228" y="37" width="14" height="10" rx="2" fill="#D17B05" stroke="#8B5A0F" stroke-width="0.5"/>
           <rect x="165" y="57" width="56" height="9" rx="3" fill="#F2C878" stroke="#8B5A0F" stroke-width="0.5"/>
           <rect x="173" y="66" width="40" height="20" rx="3" fill="#888780" stroke="#2C2C2A" stroke-width="0.6"/>
           <line x1="182" y1="70" x2="182" y2="82" stroke="#444441" stroke-width="0.4"/>
@@ -2829,18 +2867,18 @@ input[type=range]{
             <path d="M 191 90 Q 195 93 191 96 Q 195 99 191 102 Q 195 105 191 108 Q 195 111 191 114 Q 195 117 191 120 Q 195 123 191 126 Q 195 129 191 132 Q 195 135 191 138 Q 195 141 191 144 Q 195 147 191 150 Q 195 153 191 156 Q 195 159 191 162 Q 195 165 191 168" stroke="#2C2C2A" stroke-width="0.35" fill="none" opacity="0.6"/>
             <path d="M 191 168 L 193 172 L 195 168 Z" fill="#888780"/>
             <g>
-              <rect id="prof-tape" x="188" y="140" width="10" height="6" fill="#FF5A6E" stroke="#8F2323" stroke-width="0.5"/>
+              <rect id="prof-tape" x="188" y="140" width="10" height="6" fill="#C42C6A" stroke="#8F2323" stroke-width="0.5"/>
               <ellipse id="prof-tape-top" cx="193" cy="140" rx="3" ry="0.5" fill="#8F2323" opacity="0.6"/>
               <ellipse id="prof-tape-bot" cx="193" cy="146" rx="3" ry="0.5" fill="#8F2323" opacity="0.8"/>
             </g>
             <g id="prof-cote">
-              <line id="prof-cote-tape" x1="160" y1="143" x2="188" y2="143" stroke="#FF5A6E" stroke-width="0.6" stroke-dasharray="3 2"/>
-              <line id="prof-cote-tip" x1="160" y1="172" x2="193" y2="172" stroke="#FF5A6E" stroke-width="0.6" stroke-dasharray="3 2"/>
-              <line id="prof-cote-main" x1="166" y1="143" x2="166" y2="172" stroke="#FF5A6E" stroke-width="0.9"/>
-              <path id="prof-cote-top" d="M 164 145 L 166 143 L 168 145" stroke="#FF5A6E" stroke-width="0.9" fill="none"/>
-              <path id="prof-cote-bot" d="M 164 170 L 166 172 L 168 170" stroke="#FF5A6E" stroke-width="0.9" fill="none"/>
+              <line id="prof-cote-tape" x1="160" y1="143" x2="188" y2="143" stroke="#C42C6A" stroke-width="0.6" stroke-dasharray="3 2"/>
+              <line id="prof-cote-tip" x1="160" y1="172" x2="193" y2="172" stroke="#C42C6A" stroke-width="0.6" stroke-dasharray="3 2"/>
+              <line id="prof-cote-main" x1="166" y1="143" x2="166" y2="172" stroke="#C42C6A" stroke-width="0.9"/>
+              <path id="prof-cote-top" d="M 164 145 L 166 143 L 168 145" stroke="#C42C6A" stroke-width="0.9" fill="none"/>
+              <path id="prof-cote-bot" d="M 164 170 L 166 172 L 168 170" stroke="#C42C6A" stroke-width="0.9" fill="none"/>
               <rect id="prof-cote-bg" x="130" y="152" width="34" height="14" fill="#1A1A26" rx="2"/>
-              <text id="prof-cote-txt" x="147" y="162" font-size="10" fill="#FF5A6E" text-anchor="middle" font-weight="500" font-family="JetBrains Mono">30 mm</text>
+              <text id="prof-cote-txt" x="147" y="162" font-size="10" fill="#C42C6A" text-anchor="middle" font-weight="500" font-family="JetBrains Mono">30 mm</text>
             </g>
           </g>
         </g>
@@ -2868,7 +2906,7 @@ input[type=range]{
   </div>
   <div class="module-head reveal">
     <h2 class="module-title">Les réflexes de <em>sécurité</em></h2>
-    <p class="module-lead">Vrai ou faux ? Réponds pour vérifier tes bonnes habitudes. <strong>Les mauvais réflexes sont souvent contre-intuitifs.</strong></p>
+    <p class="module-lead">Vrai ou faux ? <span class="click-cta">Clique sur Vrai ou Faux</span> pour vérifier tes bonnes habitudes. <strong>Les mauvais réflexes sont souvent contre-intuitifs.</strong></p>
   </div>
 
   <div class="widget-host reveal"><div class="fig-label">Fig. 04.1</div><div class="widget reveal">
@@ -2973,31 +3011,31 @@ input[type=range]{
           <line x1="148" y1="168" x2="172" y2="174"/><line x1="148" y1="180" x2="172" y2="186"/>
         </g>
         <path d="M 148 184 L 160 212 L 172 184 Z" fill="#888780" stroke="#2C2C2A" stroke-width="0.4"/>
-        <g font-size="10" fill="#FFA726" font-weight="500" font-family="JetBrains Mono">
+        <g font-size="10" fill="#D17B05" font-weight="500" font-family="JetBrains Mono">
           <text x="230" y="41" text-anchor="start">Tête</text>
-          <line x1="205" y1="38" x2="225" y2="38" stroke="#FFA726" stroke-width="0.6"/>
-          <line x1="200" y1="38" x2="205" y2="38" stroke="#FFA726" stroke-width="0.6"/>
+          <line x1="205" y1="38" x2="225" y2="38" stroke="#D17B05" stroke-width="0.6"/>
+          <line x1="200" y1="38" x2="205" y2="38" stroke="#D17B05" stroke-width="0.6"/>
           <text x="230" y="58" text-anchor="start">Empreinte</text>
-          <line x1="172" y1="38" x2="228" y2="55" stroke="#FFA726" stroke-width="0.6"/>
+          <line x1="172" y1="38" x2="228" y2="55" stroke="#D17B05" stroke-width="0.6"/>
           <text x="230" y="78" text-anchor="start">Collet lisse</text>
-          <line x1="172" y1="55" x2="228" y2="75" stroke="#FFA726" stroke-width="0.6"/>
+          <line x1="172" y1="55" x2="228" y2="75" stroke="#D17B05" stroke-width="0.6"/>
           <text x="230" y="130" text-anchor="start">Filetage</text>
-          <line x1="172" y1="120" x2="228" y2="127" stroke="#FFA726" stroke-width="0.6"/>
+          <line x1="172" y1="120" x2="228" y2="127" stroke="#D17B05" stroke-width="0.6"/>
           <text x="230" y="210" text-anchor="start">Pointe</text>
-          <line x1="172" y1="198" x2="228" y2="207" stroke="#FFA726" stroke-width="0.6"/>
+          <line x1="172" y1="198" x2="228" y2="207" stroke="#D17B05" stroke-width="0.6"/>
         </g>
-        <g stroke="#FF5A6E" stroke-width="0.6">
+        <g stroke="#C42C6A" stroke-width="0.6">
           <line x1="100" y1="64" x2="100" y2="212"/>
           <line x1="96" y1="64" x2="104" y2="64"/>
           <line x1="96" y1="212" x2="104" y2="212"/>
         </g>
-        <text x="92" y="143" font-size="10" fill="#FF5A6E" text-anchor="end" font-weight="500" font-family="JetBrains Mono">Longueur L</text>
-        <g stroke="#9DE061" stroke-width="0.6">
+        <text x="92" y="143" font-size="10" fill="#C42C6A" text-anchor="end" font-weight="500" font-family="JetBrains Mono">Longueur L</text>
+        <g stroke="#4B8F1F" stroke-width="0.6">
           <line x1="148" y1="240" x2="172" y2="240"/>
           <line x1="148" y1="236" x2="148" y2="244"/>
           <line x1="172" y1="236" x2="172" y2="244"/>
         </g>
-        <text x="160" y="255" font-size="10" fill="#9DE061" text-anchor="middle" font-weight="500" font-family="JetBrains Mono">Diamètre Ø</text>
+        <text x="160" y="255" font-size="10" fill="#4B8F1F" text-anchor="middle" font-weight="500" font-family="JetBrains Mono">Diamètre Ø</text>
       </svg>
     </div>
   </div></div>
@@ -3084,7 +3122,7 @@ input[type=range]{
           <rect x="30" y="4" width="20" height="4" fill="#5F5E5A" stroke="#2C2C2A" stroke-width="0.3"/>
           <rect x="36" y="8" width="8" height="22" fill="#B4B2A9" stroke="#2C2C2A" stroke-width="0.3"/>
           <path d="M 36 30 L 40 34 L 44 30 Z" fill="#B4B2A9"/>
-          <g stroke="#9DE061" stroke-width="0.5"><line x1="36" y1="32" x2="44" y2="32"/><line x1="36" y1="29" x2="36" y2="35"/><line x1="44" y1="29" x2="44" y2="35"/></g>
+          <g stroke="#4B8F1F" stroke-width="0.5"><line x1="36" y1="32" x2="44" y2="32"/><line x1="36" y1="29" x2="36" y2="35"/><line x1="44" y1="29" x2="44" y2="35"/></g>
         </svg>
         <div class="lbl"><strong>4</strong> = le diamètre <span class="d">la tige fait 4 mm</span></div>
       </div>
@@ -3097,8 +3135,8 @@ input[type=range]{
             <rect x="27" y="20" width="6" height="50" fill="#B4B2A9" stroke="#2C2C2A" stroke-width="0.3"/>
             <g stroke="#2C2C2A" stroke-width="0.3"><line x1="27" y1="26" x2="33" y2="29"/><line x1="27" y1="34" x2="33" y2="37"/><line x1="27" y1="42" x2="33" y2="45"/><line x1="27" y1="50" x2="33" y2="53"/><line x1="27" y1="58" x2="33" y2="61"/></g>
             <path d="M 27 66 L 30 76 L 33 66 Z" fill="#B4B2A9" stroke="#2C2C2A" stroke-width="0.3"/>
-            <g stroke="#FF5A6E" stroke-width="0.7"><line x1="48" y1="12" x2="48" y2="76"/><path d="M 46 14 L 48 12 L 50 14"/><path d="M 46 74 L 48 76 L 50 74"/></g>
-            <text x="52" y="47" font-size="9" fill="#FF5A6E" font-weight="500" font-family="JetBrains Mono">L</text>
+            <g stroke="#C42C6A" stroke-width="0.7"><line x1="48" y1="12" x2="48" y2="76"/><path d="M 46 14 L 48 12 L 50 14"/><path d="M 46 74 L 48 76 L 50 74"/></g>
+            <text x="52" y="47" font-size="9" fill="#C42C6A" font-weight="500" font-family="JetBrains Mono">L</text>
           </svg>
           <div class="label">Tête fraisée</div>
           <div class="rule">L = totale (avec la tête)</div>
@@ -3109,8 +3147,8 @@ input[type=range]{
             <rect x="27" y="20" width="6" height="50" fill="#B4B2A9" stroke="#2C2C2A" stroke-width="0.3"/>
             <g stroke="#2C2C2A" stroke-width="0.3"><line x1="27" y1="26" x2="33" y2="29"/><line x1="27" y1="34" x2="33" y2="37"/><line x1="27" y1="42" x2="33" y2="45"/><line x1="27" y1="50" x2="33" y2="53"/><line x1="27" y1="58" x2="33" y2="61"/></g>
             <path d="M 27 66 L 30 76 L 33 66 Z" fill="#B4B2A9" stroke="#2C2C2A" stroke-width="0.3"/>
-            <g stroke="#FF5A6E" stroke-width="0.7"><line x1="48" y1="20" x2="48" y2="76"/><path d="M 46 22 L 48 20 L 50 22"/><path d="M 46 74 L 48 76 L 50 74"/></g>
-            <text x="52" y="51" font-size="9" fill="#FF5A6E" font-weight="500" font-family="JetBrains Mono">L</text>
+            <g stroke="#C42C6A" stroke-width="0.7"><line x1="48" y1="20" x2="48" y2="76"/><path d="M 46 22 L 48 20 L 50 22"/><path d="M 46 74 L 48 76 L 50 74"/></g>
+            <text x="52" y="51" font-size="9" fill="#C42C6A" font-weight="500" font-family="JetBrains Mono">L</text>
           </svg>
           <div class="label">Tête ronde / bombée</div>
           <div class="rule">L = sous la tête</div>
@@ -3408,7 +3446,7 @@ input[type=range]{
   </div>
   <div class="module-head reveal">
     <h2 class="module-title">Quiz-<em>éclair</em> ⚡</h2>
-    <p class="module-lead">Dix questions, quinze secondes chacune. <strong>Plus tu réponds vite et juste, plus tu marques de points.</strong> Score final sur trois étoiles.</p>
+    <p class="module-lead">Dix questions, quinze secondes chacune. <span class="click-cta">Clique sur la bonne réponse</span> avant la fin du chrono. Plus tu réponds vite et juste, plus tu marques de points.</p>
   </div>
 
   <div class="widget-host reveal">
@@ -3442,7 +3480,7 @@ input[type=range]{
   </div>
   <div class="module-head reveal">
     <h2 class="module-title">Mémory <em>atelier</em> 🃏</h2>
-    <p class="module-lead">Huit paires à retrouver : forets, vis, gestes, matériaux. <strong>Mémorise et associe les concepts qui vont ensemble.</strong></p>
+    <p class="module-lead">Huit paires à retrouver : forets, vis, gestes, matériaux. <span class="click-cta">Clique sur deux cartes</span> pour les retourner et trouver les paires.</p>
   </div>
 
   <div class="widget-host reveal">
@@ -3475,7 +3513,7 @@ input[type=range]{
   </div>
   <div class="module-head reveal">
     <h2 class="module-title">Le <em>bon chantier</em> 🔨</h2>
-    <p class="module-lead">Quatre scénarios, chacun avec trois choix à faire : le foret, la vis, le réglage de couple. <strong>Quinze points à décrocher au total.</strong></p>
+    <p class="module-lead">Quatre scénarios, chacun avec trois choix à faire : le foret, la vis, le réglage de couple. <span class="click-cta">Clique sur la bonne réponse</span> pour chaque question.</p>
   </div>
 
   <div class="widget-host reveal">
@@ -3507,14 +3545,14 @@ input[type=range]{
   </div>
   <div class="module-head reveal">
     <h2 class="module-title">Gestes dans <em>l'ordre</em> 🎯</h2>
-    <p class="module-lead">Les six étapes d'un bon perçage sont mélangées. <strong>Clique sur deux cartes pour les permuter, puis valide l'ordre.</strong></p>
+    <p class="module-lead">Les six étapes d'un bon perçage sont mélangées. <span class="click-cta">Clique sur deux cartes</span> pour les permuter, puis valide l'ordre.</p>
   </div>
 
   <div class="widget-host reveal">
     <div class="fig-label">Fig. 13.1</div>
     <div class="widget">
       <div class="game-shell">
-        <div class="gestes-help">Clique une carte pour la sélectionner, puis clique une autre pour les permuter</div>
+        <div class="gestes-help"><span class="click-cta">Clique une carte</span> pour la sélectionner, puis clique une autre pour les permuter</div>
         <div class="gestes-list" id="gestesList"></div>
         <div class="game-actions">
           <button class="btn primary" id="gestesCheck" data-hover>Vérifier l'ordre</button>
@@ -3888,16 +3926,18 @@ input[type=range]{
     tabs.forEach(t=>t.classList.toggle('active',t.dataset.pos===pos));
     cards.forEach(c=>c.classList.toggle('active',c.dataset.pos===pos));
     if(pos==='1'){
-      knob.setAttribute('x','124');
+      // Vitesse lente : on voit le « 1 », le bouton glisse vers l'arrière (recouvre le « 2 »)
+      knob.setAttribute('x','200');
       knob.setAttribute('fill','#0A94B5');
       knob.setAttribute('stroke','#085F77');
       label1.setAttribute('opacity','1');
-      label2.setAttribute('opacity','0.4');
+      label2.setAttribute('opacity','0');
     }else{
-      knob.setAttribute('x','200');
+      // Vitesse rapide : on voit le « 2 », le bouton glisse vers l'avant (recouvre le « 1 »)
+      knob.setAttribute('x','124');
       knob.setAttribute('fill','#FFA726');
       knob.setAttribute('stroke','#8B5A0F');
-      label1.setAttribute('opacity','0.4');
+      label1.setAttribute('opacity','0');
       label2.setAttribute('opacity','1');
     }
   }
