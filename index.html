@@ -1744,6 +1744,172 @@ input[type=range]{
 }
 .mode-when li strong{color:var(--text);font-weight:600;}
 
+/* ============================ MOTS CROISÉS (Fig. 14) ============================ */
+.xword-board{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:32px;align-items:start;
+  margin-bottom:18px;
+}
+@media(max-width:760px){.xword-board{grid-template-columns:1fr;}}
+.xword-grid{
+  display:grid;gap:2px;
+  background:var(--text-muted);
+  padding:2px;border-radius:6px;
+  width:max-content;
+  user-select:none;
+}
+.xword-row{display:flex;gap:2px;}
+.xword-cell{
+  width:38px;height:38px;
+  position:relative;
+  background:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+}
+.xword-cell.empty{background:#1C1A2C;}
+.xword-cell.letter{
+  background:var(--paper);
+  cursor:pointer;
+  transition:background 0.15s;
+}
+.xword-cell.letter:hover{background:#FFF8E5;}
+.xword-cell.selected{background:color-mix(in srgb,var(--c5) 30%,#FFF);box-shadow:inset 0 0 0 2px var(--c5);}
+.xword-cell.highlight{background:color-mix(in srgb,var(--c5) 12%,#FFF);}
+.xword-cell.correct{background:color-mix(in srgb,var(--c4) 28%,#FFF);}
+.xword-cell.wrong{background:color-mix(in srgb,var(--c3) 26%,#FFF);}
+.xword-num{
+  position:absolute;top:2px;left:3px;
+  font-family:var(--mono);font-size:8px;font-weight:700;
+  color:var(--text);opacity:0.7;
+  line-height:1;pointer-events:none;
+}
+.xword-input{
+  width:100%;height:100%;
+  background:transparent;border:none;outline:none;
+  font-family:var(--display);font-weight:700;
+  font-size:20px;text-align:center;
+  text-transform:uppercase;
+  color:var(--text);
+  padding:0;
+}
+.xword-input:focus{outline:none;}
+.xword-clues{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.xword-clue-group h4{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--c5);margin-bottom:10px;padding-bottom:6px;
+  border-bottom:1px solid var(--border);
+}
+.xword-clue-list{list-style:none;padding:0;margin:0;}
+.xword-clue-list li{
+  font-family:var(--body);font-size:13px;line-height:1.5;
+  color:var(--text-muted);
+  padding:5px 8px;margin:2px -8px;
+  border-radius:4px;cursor:pointer;
+  transition:background 0.15s;
+}
+.xword-clue-list li:hover{background:color-mix(in srgb,var(--c5) 8%,transparent);color:var(--text);}
+.xword-clue-list li.active{background:color-mix(in srgb,var(--c5) 18%,transparent);color:var(--text);font-weight:600;}
+.xword-clue-list li.solved{color:var(--c4);text-decoration:line-through;text-decoration-thickness:1px;opacity:0.7;}
+.xword-clue-list li b{font-family:var(--mono);font-weight:700;color:var(--text);margin-right:6px;}
+.xword-actions{display:flex;gap:10px;margin-top:10px;}
+.xword-actions button{flex:1;max-width:160px;}
+.xword-result{
+  margin-top:14px;padding:12px 16px;
+  border-radius:6px;font-family:var(--body);font-size:14px;
+  display:none;
+}
+.xword-result.show{display:block;}
+.xword-result.win{background:color-mix(in srgb,var(--c4) 18%,transparent);color:#3A6F18;border:1px solid var(--c4);}
+.xword-result.partial{background:color-mix(in srgb,var(--c1) 18%,transparent);color:#7A4500;border:1px solid var(--c1);}
+
+/* ============================ ANAGRAMMES (Fig. 15) ============================ */
+.anag-grid{
+  display:grid;gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+.anag-card{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-left:4px solid var(--c5);
+  border-radius:var(--radius);
+  padding:18px 20px;
+  position:relative;
+}
+.anag-card.solved{border-left-color:var(--c4);background:color-mix(in srgb,var(--c4) 5%,var(--paper));}
+.anag-num{
+  font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--c5);margin-bottom:6px;
+}
+.anag-card.solved .anag-num{color:var(--c4);}
+.anag-clue{
+  font-family:var(--body);font-size:13px;line-height:1.5;
+  color:var(--text-muted);margin-bottom:12px;
+}
+.anag-scrambled{
+  font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:30px;letter-spacing:0.12em;
+  color:var(--text);margin-bottom:14px;
+  user-select:none;
+  text-transform:uppercase;
+}
+.anag-scrambled span{
+  display:inline-block;
+  margin:0 2px;
+  padding:2px 6px;
+  background:color-mix(in srgb,var(--c5) 14%,transparent);
+  border-radius:4px;
+  transform:translateY(0);
+  transition:transform 0.2s;
+}
+.anag-card.solved .anag-scrambled span{background:color-mix(in srgb,var(--c4) 18%,transparent);}
+.anag-input-row{display:flex;gap:8px;}
+.anag-input{
+  flex:1;
+  padding:10px 14px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:6px;
+  font-family:var(--mono);font-size:14px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text);
+}
+.anag-input:focus{outline:none;border-color:var(--c5);background:var(--paper);}
+.anag-card.solved .anag-input{border-color:var(--c4);background:color-mix(in srgb,var(--c4) 8%,var(--paper));color:var(--c4);}
+.anag-check{
+  padding:10px 18px;background:var(--c5);color:#fff;
+  border:none;border-radius:6px;cursor:pointer;
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  transition:transform 0.15s;
+}
+.anag-check:hover{transform:translateY(-1px);}
+.anag-card.solved .anag-check{display:none;}
+.anag-card.solved::after{
+  content:"✓";
+  position:absolute;top:14px;right:18px;
+  font-size:22px;color:var(--c4);font-weight:900;
+}
+.anag-feedback{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:0.06em;
+  margin-top:10px;min-height:14px;
+  color:var(--c3);
+}
+.anag-card.solved .anag-feedback{color:var(--c4);}
+.anag-hint{
+  display:inline-block;
+  margin-top:8px;
+  font-family:var(--mono);font-size:10px;
+  color:var(--text-dim);cursor:pointer;
+  text-decoration:underline dotted;
+}
+
 /* ============================ JEUX BONUS ============================ */
 
 /* ---- shared game shell ---- */
@@ -2296,7 +2462,7 @@ input[type=range]{
   </div>
 
   <div class="sommaire">
-    <div class="sommaire-lbl">Sommaire · 4 chapitres · 9 modules · <span style="color:var(--c5);">+ 4 défis bonus</span></div>
+    <div class="sommaire-lbl">Sommaire · 4 chapitres · 9 modules · <span style="color:var(--c5);">+ 6 défis bonus</span></div>
     <div class="chap-grid">
       <a href="#anatomie" class="chap-card" data-c="1">
         <div class="n">01</div>
@@ -2325,8 +2491,8 @@ input[type=range]{
       <a href="#bonus" class="chap-card" data-c="5">
         <div class="n">★</div>
         <div class="ttl"><em>Défis</em> bonus</div>
-        <div class="sub">Quiz · Mémory · Chantier · Gestes</div>
-        <div class="pg">p. 10 → 13</div>
+        <div class="sub">Quiz · Mémory · Chantier · Gestes · Mots croisés · Anagrammes</div>
+        <div class="pg">p. 10 → 15</div>
       </a>
     </div>
   </div>
@@ -3427,10 +3593,10 @@ input[type=range]{
       <div class="chapter-kicker">Chapitre bonus</div>
       <h2 class="chapter-title"><em>Défis</em> pour les plus rapides</h2>
       <p class="chapter-desc">
-        Tu as fini tous les modules ? Bien. Quatre jeux pour consolider — quiz contre la montre, mémory d'atelier, choix d'équipement sur chantier, et remise en ordre des gestes.
+        Tu as fini tous les modules ? Bien. Six jeux pour consolider — quiz contre la montre, mémory d'atelier, choix d'équipement sur chantier, remise en ordre des gestes, mots croisés et anagrammes.
       </p>
       <div class="chapter-meta">
-        <span>4 jeux</span><span>Score &amp; chrono</span><span>Rejouables</span><span>~15 min</span>
+        <span>6 jeux</span><span>Score &amp; chrono</span><span>Rejouables</span><span>~25 min</span>
       </div>
     </div>
   </div>
@@ -3439,7 +3605,7 @@ input[type=range]{
 <!-- ======== GAME 01 · QUIZ ÉCLAIR ======== -->
 <section class="module" id="quiz" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 01 / 04</span>
+    <span class="mod-n">Défi 01 / 06</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 10</span>
@@ -3473,7 +3639,7 @@ input[type=range]{
 <!-- ======== GAME 02 · MÉMORY ======== -->
 <section class="module" id="memory" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 02 / 04</span>
+    <span class="mod-n">Défi 02 / 06</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 11</span>
@@ -3506,7 +3672,7 @@ input[type=range]{
 <!-- ======== GAME 03 · LE BON CHANTIER ======== -->
 <section class="module" id="chantier" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 03 / 04</span>
+    <span class="mod-n">Défi 03 / 06</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 12</span>
@@ -3538,7 +3704,7 @@ input[type=range]{
 <!-- ======== GAME 04 · GESTES DANS L'ORDRE ======== -->
 <section class="module" id="gestes" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 04 / 04</span>
+    <span class="mod-n">Défi 04 / 06</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 13</span>
@@ -3565,6 +3731,70 @@ input[type=range]{
 </section>
 
 
+<!-- ======== DÉFI 05 · MOTS CROISÉS ======== -->
+<section class="module" id="motscroises" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 05 / 06</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 14</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Les mots <em>croisés</em></h2>
+    <p class="module-lead">Cinq mots du vocabulaire perceuse cachés dans la grille. <span class="click-cta">Clique sur une case</span> pour la sélectionner, puis tape la lettre au clavier. Sur mobile, le clavier s'ouvre tout seul.</p>
+  </div>
+
+  <div class="widget-host reveal"><div class="fig-label">Fig. 14.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">À tes claviers !</div>
+      <div class="widget-meta">5 MOTS · 25 LETTRES</div>
+    </div>
+    <div class="xword-board" id="xwordBoard">
+      <div class="xword-grid" id="xwordGrid"></div>
+      <div class="xword-clues">
+        <div class="xword-clue-group">
+          <h4>Horizontal</h4>
+          <ol class="xword-clue-list" id="xwordCluesAcross"></ol>
+        </div>
+        <div class="xword-clue-group">
+          <h4>Vertical</h4>
+          <ol class="xword-clue-list" id="xwordCluesDown"></ol>
+        </div>
+      </div>
+    </div>
+    <div class="xword-actions">
+      <button id="xwordCheck">Vérifier</button>
+      <button id="xwordReveal">Indice (révèle une lettre)</button>
+      <button id="xwordReset">Recommencer</button>
+    </div>
+    <div class="xword-result" id="xwordResult"></div>
+  </div></div>
+</section>
+
+
+<!-- ======== DÉFI 06 · ANAGRAMMES ======== -->
+<section class="module" id="anagrammes" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 06 / 06</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 15</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Les mots <em>mélangés</em></h2>
+    <p class="module-lead">Six mots de l'atelier ont été passés à la bétonnière. Remets les lettres dans le bon ordre — la définition aide. <span class="click-cta">Tape ta réponse</span> dans le champ et valide.</p>
+  </div>
+
+  <div class="widget-host reveal"><div class="fig-label">Fig. 15.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">Reconstitue les mots</div>
+      <div class="widget-meta">6 ANAGRAMMES</div>
+    </div>
+    <div class="anag-grid" id="anagGrid"></div>
+  </div></div>
+</section>
+
+
 
 <!-- ======== COLOPHON ======== -->
 <footer class="colophon">
@@ -3583,14 +3813,14 @@ input[type=range]{
   <div class="colophon-grid">
     <div class="colo-col">
       <h5>L'édition</h5>
-      <p>Manuel interactif en neuf modules plus quatre défis bonus sur la perceuse-visseuse — destiné aux élèves du cycle 4 et aux enseignants qui veulent un support zéro-PowerPoint.</p>
+      <p>Manuel interactif en neuf modules plus six défis bonus sur la perceuse-visseuse — destiné aux élèves du cycle 4 et aux enseignants qui veulent un support zéro-PowerPoint.</p>
     </div>
     <div class="colo-col">
       <h5>Détails</h5>
       <ul>
         <li><span>Édition</span><strong>№ 01 · 2026</strong></li>
         <li><span>Niveau</span><strong>4ᵉ / 3ᵉ</strong></li>
-        <li><span>Modules</span><strong>9 + 4 défis</strong></li>
+        <li><span>Modules</span><strong>9 + 6 défis</strong></li>
         <li><span>Durée</span><strong>~60 min</strong></li>
       </ul>
     </div>
@@ -4003,6 +4233,276 @@ input[type=range]{
 
   tabs.forEach(t=>t.addEventListener('click',()=>apply(t.dataset.dir)));
   apply('right');
+})();
+
+/* ============ GAME 05 · MOTS CROISÉS ============ */
+(function(){
+  const gridEl=document.getElementById('xwordGrid');
+  if(!gridEl)return;
+  // Grille (9 colonnes × 6 rangées). '.' = case noire (vide). Lettre = case blanche
+  const SOLUTION=[
+    ['.','.','.','.','F','.','.','.','.'],
+    ['.','.','.','C','O','U','P','L','E'],
+    ['M','A','N','D','R','I','N','.','.'],
+    ['.','.','.','.','E','.','V','I','S'],
+    ['.','.','.','.','T','.','.','.','.'],
+    ['.','.','B','O','I','S','.','.','.']
+  ];
+  const ROWS=SOLUTION.length, COLS=SOLUTION[0].length;
+  // Définitions (cases numérotées en début de mot, sens across=horizontal, down=vertical)
+  const WORDS=[
+    {num:1,dir:'across',r:1,c:3,len:6,word:'COUPLE',clue:"La force de serrage, réglable par la bague à crans (1→15)"},
+    {num:2,dir:'across',r:2,c:0,len:7,word:'MANDRIN',clue:"La pièce métallique à trois mors qui serre le foret"},
+    {num:3,dir:'across',r:3,c:6,len:3,word:'VIS',clue:"Petite pièce filetée pour assembler du bois ou fixer une étagère"},
+    {num:4,dir:'across',r:5,c:2,len:4,word:'BOIS',clue:"Matériau qu'on perce le plus souvent avec un foret hélicoïdal"},
+    {num:5,dir:'down',r:0,c:4,len:5,word:'FORET',clue:"Synonyme de mèche : outil hélicoïdal qui creuse"}
+  ];
+  // State : entered letters
+  const state=Array.from({length:ROWS},()=>Array(COLS).fill(''));
+  let selR=-1,selC=-1,selDir='across';
+
+  // Numbering map
+  const numMap={};
+  WORDS.forEach(w=>{numMap[w.r+'-'+w.c]=w.num;});
+
+  function render(){
+    gridEl.innerHTML='';
+    gridEl.style.gridTemplateColumns=`repeat(${COLS}, 38px)`;
+    for(let r=0;r<ROWS;r++){
+      const row=document.createElement('div');
+      row.className='xword-row';
+      for(let c=0;c<COLS;c++){
+        const cell=document.createElement('div');
+        cell.className='xword-cell';
+        if(SOLUTION[r][c]==='.'){cell.classList.add('empty');}
+        else{
+          cell.classList.add('letter');
+          cell.dataset.r=r;cell.dataset.c=c;
+          if(numMap[r+'-'+c]){
+            const n=document.createElement('span');
+            n.className='xword-num';n.textContent=numMap[r+'-'+c];
+            cell.appendChild(n);
+          }
+          const inp=document.createElement('input');
+          inp.type='text';inp.maxLength=1;
+          inp.className='xword-input';
+          inp.value=state[r][c]||'';
+          inp.dataset.r=r;inp.dataset.c=c;
+          cell.appendChild(inp);
+          inp.addEventListener('focus',()=>selectCell(r,c,false));
+          inp.addEventListener('click',()=>{
+            if(selR===r&&selC===c)selDir=selDir==='across'?'down':'across';
+            selectCell(r,c,false);
+          });
+          inp.addEventListener('input',e=>{
+            const v=e.target.value.toUpperCase().replace(/[^A-Z]/g,'');
+            e.target.value=v;
+            state[r][c]=v;
+            if(v)advance(r,c);
+            cell.classList.remove('correct','wrong');
+          });
+          inp.addEventListener('keydown',e=>{
+            if(e.key==='Backspace'&&!e.target.value){retreat(r,c);}
+            else if(e.key==='ArrowRight'){move(r,c,0,1);e.preventDefault();}
+            else if(e.key==='ArrowLeft'){move(r,c,0,-1);e.preventDefault();}
+            else if(e.key==='ArrowDown'){move(r,c,1,0);e.preventDefault();}
+            else if(e.key==='ArrowUp'){move(r,c,-1,0);e.preventDefault();}
+          });
+        }
+        row.appendChild(cell);
+      }
+      gridEl.appendChild(row);
+    }
+    highlight();
+  }
+  function isLetter(r,c){return r>=0&&r<ROWS&&c>=0&&c<COLS&&SOLUTION[r][c]!=='.';}
+  function selectCell(r,c,focus){
+    selR=r;selC=c;
+    highlight();
+    if(focus){
+      const inp=gridEl.querySelector(`input[data-r="${r}"][data-c="${c}"]`);
+      if(inp)inp.focus();
+    }
+  }
+  function move(r,c,dr,dc){
+    let nr=r+dr,nc=c+dc;
+    while(isLetter(nr,nc)===false&&(nr>=0&&nr<ROWS&&nc>=0&&nc<COLS)){nr+=dr;nc+=dc;}
+    if(isLetter(nr,nc)){selectCell(nr,nc,true);}
+  }
+  function advance(r,c){
+    const dr=selDir==='down'?1:0;
+    const dc=selDir==='across'?1:0;
+    if(isLetter(r+dr,c+dc))selectCell(r+dr,c+dc,true);
+  }
+  function retreat(r,c){
+    const dr=selDir==='down'?-1:0;
+    const dc=selDir==='across'?-1:0;
+    if(isLetter(r+dr,c+dc)){
+      state[r+dr][c+dc]='';
+      const inp=gridEl.querySelector(`input[data-r="${r+dr}"][data-c="${c+dc}"]`);
+      if(inp){inp.value='';selectCell(r+dr,c+dc,true);}
+    }
+  }
+  function highlight(){
+    gridEl.querySelectorAll('.xword-cell').forEach(el=>el.classList.remove('selected','highlight'));
+    if(selR<0)return;
+    const sel=gridEl.querySelector(`.xword-cell input[data-r="${selR}"][data-c="${selC}"]`);
+    if(sel)sel.parentElement.classList.add('selected');
+    // Highlight word in current direction
+    let dr=selDir==='down'?1:0,dc=selDir==='across'?1:0;
+    // Find start
+    let sR=selR,sC=selC;
+    while(isLetter(sR-dr,sC-dc)){sR-=dr;sC-=dc;}
+    while(isLetter(sR,sC)){
+      if(!(sR===selR&&sC===selC)){
+        const c=gridEl.querySelector(`.xword-cell input[data-r="${sR}"][data-c="${sC}"]`);
+        if(c)c.parentElement.classList.add('highlight');
+      }
+      sR+=dr;sC+=dc;
+    }
+    // Highlight clue
+    document.querySelectorAll('.xword-clue-list li').forEach(li=>li.classList.remove('active'));
+    const word=WORDS.find(w=>{
+      if(w.dir!==selDir)return false;
+      if(w.dir==='across'){return w.r===sR-dr&&w.c<=selC&&w.c+w.len>selC;}
+      else{return w.c===sC-dc&&w.r<=selR&&w.r+w.len>selR;}
+    });
+    if(word){
+      const li=document.querySelector(`.xword-clue-list[data-dir="${word.dir}"] li[data-num="${word.num}"]`);
+      if(li)li.classList.add('active');
+    }
+  }
+  function renderClues(){
+    const a=document.getElementById('xwordCluesAcross');
+    const d=document.getElementById('xwordCluesDown');
+    a.innerHTML='';d.innerHTML='';
+    a.dataset.dir='across';d.dataset.dir='down';
+    WORDS.forEach(w=>{
+      const li=document.createElement('li');
+      li.dataset.num=w.num;
+      li.innerHTML=`<b>${w.num}.</b> ${w.clue} <em style="opacity:0.5;font-size:11px;">(${w.len} lettres)</em>`;
+      li.addEventListener('click',()=>{selDir=w.dir;selectCell(w.r,w.c,true);});
+      if(w.dir==='across')a.appendChild(li);else d.appendChild(li);
+    });
+  }
+  function check(){
+    let allCorrect=true,filled=0,total=0;
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+      if(SOLUTION[r][c]==='.')continue;
+      total++;
+      const cell=gridEl.querySelector(`.xword-cell input[data-r="${r}"][data-c="${c}"]`).parentElement;
+      cell.classList.remove('correct','wrong');
+      if(!state[r][c]){allCorrect=false;continue;}
+      filled++;
+      if(state[r][c]===SOLUTION[r][c]){cell.classList.add('correct');}
+      else{cell.classList.add('wrong');allCorrect=false;}
+    }
+    // Mark solved clues
+    document.querySelectorAll('.xword-clue-list li').forEach(li=>li.classList.remove('solved'));
+    WORDS.forEach(w=>{
+      let ok=true;
+      for(let i=0;i<w.len;i++){
+        const r=w.dir==='down'?w.r+i:w.r;
+        const c=w.dir==='across'?w.c+i:w.c;
+        if(state[r][c]!==w.word[i]){ok=false;break;}
+      }
+      if(ok){
+        const li=document.querySelector(`.xword-clue-list[data-dir="${w.dir}"] li[data-num="${w.num}"]`);
+        if(li)li.classList.add('solved');
+      }
+    });
+    const res=document.getElementById('xwordResult');
+    res.classList.remove('win','partial','show');
+    if(allCorrect&&filled===total){
+      res.textContent='🎉 Bravo, grille complète et toutes les lettres sont justes !';
+      res.classList.add('show','win');
+    }else if(filled>0){
+      const solved=document.querySelectorAll('.xword-clue-list li.solved').length;
+      res.textContent=`${solved} / ${WORDS.length} mots trouvés. Les cases vertes sont justes, les rouges à corriger.`;
+      res.classList.add('show','partial');
+    }
+  }
+  function reveal(){
+    if(selR<0){alert('Sélectionne d\'abord une case dans la grille.');return;}
+    state[selR][selC]=SOLUTION[selR][selC];
+    const inp=gridEl.querySelector(`.xword-cell input[data-r="${selR}"][data-c="${selC}"]`);
+    if(inp){inp.value=SOLUTION[selR][selC];inp.parentElement.classList.add('correct');}
+  }
+  function reset(){
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)state[r][c]='';
+    render();renderClues();
+    document.getElementById('xwordResult').classList.remove('show');
+  }
+  document.getElementById('xwordCheck').addEventListener('click',check);
+  document.getElementById('xwordReveal').addEventListener('click',reveal);
+  document.getElementById('xwordReset').addEventListener('click',reset);
+  renderClues();render();
+})();
+
+/* ============ GAME 06 · ANAGRAMMES ============ */
+(function(){
+  const grid=document.getElementById('anagGrid');
+  if(!grid)return;
+  const PUZZLES=[
+    {answer:'MARTEAU',clue:"L'outil avec une tête et un manche, mais pas un foret"},
+    {answer:'EMBOUT',clue:"L'extrémité d'une visseuse, qu'on change selon le type de tête de vis"},
+    {answer:'POIGNEE',clue:"La partie qu'on tient avec la main (sans accent dans la réponse)"},
+    {answer:'BATTERIE',clue:"L'élément amovible qui se recharge sur son socle"},
+    {answer:'PERCUSSION',clue:"Le 3e mode de la bague, pour le béton"},
+    {answer:'CARBURE',clue:"Le matériau dur de la pastille au bout d'un foret béton"}
+  ];
+  function scramble(word){
+    let s=word.split('');
+    let attempts=0;
+    while(s.join('')===word&&attempts<20){
+      for(let i=s.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [s[i],s[j]]=[s[j],s[i]];
+      }
+      attempts++;
+    }
+    return s.join('');
+  }
+  function buildCard(p,idx){
+    const card=document.createElement('div');
+    card.className='anag-card';card.dataset.idx=idx;
+    const scrambled=scramble(p.answer);
+    card.innerHTML=`
+      <div class="anag-num">№ ${(idx+1).toString().padStart(2,'0')} · ${p.answer.length} lettres</div>
+      <p class="anag-clue">${p.clue}</p>
+      <div class="anag-scrambled">${scrambled.split('').map(l=>`<span>${l}</span>`).join('')}</div>
+      <div class="anag-input-row">
+        <input type="text" class="anag-input" maxlength="${p.answer.length}" placeholder="ta réponse" autocomplete="off"/>
+        <button class="anag-check">Vérifier</button>
+      </div>
+      <div class="anag-feedback"></div>
+      <span class="anag-hint">Indice : première lettre = ${p.answer[0]}</span>
+    `;
+    const inp=card.querySelector('.anag-input');
+    const btn=card.querySelector('.anag-check');
+    const fb=card.querySelector('.anag-feedback');
+    function check(){
+      const v=inp.value.toUpperCase().replace(/[^A-Z]/g,'').trim();
+      if(!v){fb.textContent='Entre une réponse';return;}
+      if(v===p.answer){
+        card.classList.add('solved');
+        fb.textContent=`✓ ${p.answer} — bravo !`;
+        inp.value=p.answer;inp.disabled=true;
+      }else{
+        fb.textContent=`✗ "${v}" — essaie encore`;
+        inp.style.animation='shake 0.4s';
+        setTimeout(()=>inp.style.animation='',400);
+      }
+    }
+    btn.addEventListener('click',check);
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter')check();});
+    return card;
+  }
+  PUZZLES.forEach((p,i)=>grid.appendChild(buildCard(p,i)));
+  // shake keyframes
+  const sty=document.createElement('style');
+  sty.textContent='@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}';
+  document.head.appendChild(sty);
 })();
 
 /* ============ GAME 01 · QUIZ ÉCLAIR ============ */
