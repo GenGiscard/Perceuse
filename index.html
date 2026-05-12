@@ -1744,6 +1744,243 @@ input[type=range]{
 }
 .mode-when li strong{color:var(--text);font-weight:600;}
 
+/* ============================ DEVINETTES (Fig. 16) ============================ */
+.devine-stage{
+  padding:22px 24px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.devine-progress{
+  display:flex;gap:4px;margin-bottom:18px;
+}
+.devine-dot{
+  flex:1;height:5px;background:var(--border);border-radius:3px;
+  transition:background 0.3s;
+}
+.devine-dot.current{background:var(--c5);}
+.devine-dot.right{background:var(--c4);}
+.devine-dot.wrong{background:var(--c3);}
+.devine-num{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--c5);margin-bottom:10px;
+}
+.devine-clue{
+  font-family:var(--display);font-style:italic;
+  font-size:clamp(18px,3vw,24px);line-height:1.4;
+  color:var(--text);margin-bottom:24px;
+  padding:14px 18px;
+  border-left:3px solid var(--c5);
+  background:color-mix(in srgb,var(--c5) 6%,transparent);
+  border-radius:0 6px 6px 0;
+}
+.devine-opts{display:grid;gap:8px;}
+.devine-opt{
+  padding:14px 18px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:6px;
+  font-family:var(--body);font-size:14px;font-weight:500;
+  color:var(--text);text-align:left;cursor:pointer;
+  transition:all 0.15s;
+}
+.devine-opt:hover:not(:disabled){background:var(--surface-3);border-color:var(--c5);transform:translateX(2px);}
+.devine-opt:disabled{cursor:default;}
+.devine-opt.right{background:color-mix(in srgb,var(--c4) 18%,transparent);border-color:var(--c4);}
+.devine-opt.wrong{background:color-mix(in srgb,var(--c3) 18%,transparent);border-color:var(--c3);}
+.devine-fb{
+  margin-top:14px;padding:12px 16px;
+  background:var(--surface-2);border-radius:6px;
+  font-family:var(--body);font-size:13px;line-height:1.5;
+  color:var(--text-muted);
+  display:none;
+}
+.devine-fb.show{display:block;}
+.devine-fb strong{color:var(--text);}
+.devine-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:16px;
+}
+.devine-counter{font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.12em;}
+.devine-next,.devine-restart{
+  padding:8px 18px;background:var(--c5);color:#fff;
+  border:none;border-radius:6px;cursor:pointer;
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+}
+
+/* ============================ TROUVE L'INTRUS (Fig. 17) ============================ */
+.intrus-stage{
+  padding:22px 24px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.intrus-q{
+  font-family:var(--display);font-weight:700;
+  font-size:18px;color:var(--text);
+  margin-bottom:18px;text-align:center;
+  letter-spacing:-0.01em;
+}
+.intrus-q em{font-style:italic;color:var(--c5);}
+.intrus-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;margin-bottom:14px;
+}
+@media(max-width:600px){.intrus-grid{grid-template-columns:repeat(2,1fr);}}
+.intrus-item{
+  position:relative;
+  padding:18px 12px;
+  background:var(--surface-2);
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;min-height:120px;
+  transition:all 0.2s var(--ease);
+}
+.intrus-item:hover:not(:disabled){transform:translateY(-2px);border-color:var(--c5);}
+.intrus-item:disabled{cursor:default;}
+.intrus-item.right{background:color-mix(in srgb,var(--c4) 18%,transparent);border-color:var(--c4);}
+.intrus-item.wrong{background:color-mix(in srgb,var(--c3) 18%,transparent);border-color:var(--c3);}
+.intrus-item.shown-right{border-color:var(--c4);}
+.intrus-icon{width:48px;height:48px;color:var(--text);flex-shrink:0;}
+.intrus-label{
+  font-family:var(--body);font-size:13px;font-weight:600;
+  color:var(--text);text-align:center;line-height:1.3;
+}
+.intrus-fb{
+  margin-top:14px;padding:12px 16px;
+  background:var(--surface-2);border-radius:6px;
+  font-size:13px;line-height:1.5;color:var(--text-muted);
+  display:none;
+}
+.intrus-fb.show{display:block;}
+.intrus-fb strong{color:var(--text);}
+
+/* ============================ LE BON RÉGLAGE (Fig. 18) ============================ */
+.reg-stage{
+  padding:22px 24px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.reg-scenario{
+  font-family:var(--display);font-style:italic;
+  font-size:clamp(17px,2.5vw,20px);line-height:1.5;
+  color:var(--text);
+  padding:14px 18px;
+  background:color-mix(in srgb,var(--c5) 8%,transparent);
+  border-left:3px solid var(--c5);
+  border-radius:0 6px 6px 0;
+  margin-bottom:20px;
+}
+.reg-controls{display:grid;gap:14px;margin-bottom:18px;}
+.reg-ctrl{
+  padding:14px 16px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.reg-ctrl-label{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--c5);margin-bottom:10px;
+}
+.reg-opts{display:flex;gap:8px;flex-wrap:wrap;}
+.reg-opt{
+  padding:8px 14px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:6px;
+  font-family:var(--body);font-size:13px;font-weight:500;
+  color:var(--text);cursor:pointer;
+  transition:all 0.15s;
+}
+.reg-opt:hover:not(:disabled){border-color:var(--c5);transform:translateY(-1px);}
+.reg-opt:disabled{cursor:default;opacity:0.8;}
+.reg-opt.sel{background:var(--c5);color:#fff;border-color:var(--c5);}
+.reg-opt.right{background:color-mix(in srgb,var(--c4) 25%,transparent)!important;border-color:var(--c4);color:#3A6F18;}
+.reg-opt.wrong{background:color-mix(in srgb,var(--c3) 25%,transparent)!important;border-color:var(--c3);color:#8B1F4D;}
+.reg-fb{
+  margin-top:14px;padding:12px 16px;
+  background:var(--surface-2);border-radius:6px;
+  font-size:13px;line-height:1.55;color:var(--text-muted);
+  display:none;
+}
+.reg-fb.show{display:block;}
+.reg-fb h5{font-family:var(--display);font-weight:700;font-size:14px;color:var(--text);margin-bottom:6px;}
+.reg-fb strong{color:var(--text);}
+.reg-actions{display:flex;gap:8px;margin-top:12px;}
+.reg-actions button{flex:1;max-width:200px;}
+
+/* ============================ DÉFI LOCK SYSTEM ============================ */
+.defi-locked{position:relative;}
+.defi-locked .widget-host{position:relative;}
+.defi-locked .widget-host>.widget{
+  filter:blur(3px) saturate(0.6);
+  pointer-events:none;
+  user-select:none;
+  opacity:0.55;
+  transition:filter 0.3s,opacity 0.3s;
+}
+.defi-lock-overlay{
+  position:absolute;
+  inset:0;
+  z-index:20;
+  display:flex;align-items:center;justify-content:center;
+  background:color-mix(in srgb,var(--bg) 70%,transparent);
+  border-radius:var(--radius);
+  padding:20px;
+}
+.defi-lock-inner{
+  max-width:420px;
+  padding:28px 32px;
+  text-align:center;
+  background:var(--paper);
+  border:2px solid var(--c5);
+  border-radius:var(--radius-lg);
+  box-shadow:0 12px 40px rgba(28,26,44,0.20);
+}
+.defi-lock-icon{
+  font-size:42px;
+  margin-bottom:8px;
+  filter:drop-shadow(0 2px 4px rgba(123,75,207,0.3));
+}
+.defi-lock-title{
+  font-family:var(--display);font-weight:700;
+  font-size:22px;letter-spacing:-0.01em;
+  color:var(--c5);margin-bottom:10px;
+}
+.defi-lock-msg{
+  font-family:var(--body);font-size:14px;line-height:1.55;
+  color:var(--text-muted);
+  margin-bottom:14px;
+}
+.defi-lock-msg strong{color:var(--text);font-weight:700;}
+.defi-lock-score{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--text-dim);
+  padding-top:10px;
+  border-top:1px dashed var(--border);
+}
+.defi-lock-score b{color:var(--c5);font-weight:700;}
+
+/* Section folio gets a small badge when locked or completed */
+.defi-status-badge{
+  display:inline-block;
+  margin-left:8px;
+  padding:2px 8px;
+  font-family:var(--mono);font-size:9px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  border-radius:3px;
+}
+.defi-status-badge.locked{background:color-mix(in srgb,var(--c5) 15%,transparent);color:var(--c5);}
+.defi-status-badge.done{background:color-mix(in srgb,var(--c4) 18%,transparent);color:var(--c4);}
+
 /* ============================ MOTS CROISÉS (Fig. 14) ============================ */
 .xword-board{
   display:grid;
@@ -1759,7 +1996,6 @@ input[type=range]{
   width:max-content;
   user-select:none;
 }
-.xword-row{display:flex;gap:2px;}
 .xword-cell{
   width:38px;height:38px;
   position:relative;
@@ -2462,7 +2698,7 @@ input[type=range]{
   </div>
 
   <div class="sommaire">
-    <div class="sommaire-lbl">Sommaire · 4 chapitres · 9 modules · <span style="color:var(--c5);">+ 6 défis bonus</span></div>
+    <div class="sommaire-lbl">Sommaire · 4 chapitres · 9 modules · <span style="color:var(--c5);">+ 9 défis bonus</span></div>
     <div class="chap-grid">
       <a href="#anatomie" class="chap-card" data-c="1">
         <div class="n">01</div>
@@ -2491,8 +2727,8 @@ input[type=range]{
       <a href="#bonus" class="chap-card" data-c="5">
         <div class="n">★</div>
         <div class="ttl"><em>Défis</em> bonus</div>
-        <div class="sub">Quiz · Mémory · Chantier · Gestes · Mots croisés · Anagrammes</div>
-        <div class="pg">p. 10 → 15</div>
+        <div class="sub">Quiz · Mémory · Chantier · Gestes · Mots croisés · Anagrammes · Devinettes · Intrus · Réglage</div>
+        <div class="pg">p. 10 → 18</div>
       </a>
     </div>
   </div>
@@ -3593,10 +3829,10 @@ input[type=range]{
       <div class="chapter-kicker">Chapitre bonus</div>
       <h2 class="chapter-title"><em>Défis</em> pour les plus rapides</h2>
       <p class="chapter-desc">
-        Tu as fini tous les modules ? Bien. Six jeux pour consolider — quiz contre la montre, mémory d'atelier, choix d'équipement sur chantier, remise en ordre des gestes, mots croisés et anagrammes.
+        Tu as fini tous les modules ? Bien. Neuf jeux pour consolider — quiz contre la montre, mémory d'atelier, choix d'équipement sur chantier, remise en ordre des gestes, mots croisés, anagrammes, devinettes, trouve l'intrus, et le bon réglage.
       </p>
       <div class="chapter-meta">
-        <span>6 jeux</span><span>Score &amp; chrono</span><span>Rejouables</span><span>~25 min</span>
+        <span>9 jeux</span><span>Score &amp; chrono</span><span>Rejouables</span><span>~40 min</span>
       </div>
     </div>
   </div>
@@ -3605,7 +3841,7 @@ input[type=range]{
 <!-- ======== GAME 01 · QUIZ ÉCLAIR ======== -->
 <section class="module" id="quiz" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 01 / 06</span>
+    <span class="mod-n">Défi 01 / 09</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 10</span>
@@ -3639,7 +3875,7 @@ input[type=range]{
 <!-- ======== GAME 02 · MÉMORY ======== -->
 <section class="module" id="memory" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 02 / 06</span>
+    <span class="mod-n">Défi 02 / 09</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 11</span>
@@ -3672,7 +3908,7 @@ input[type=range]{
 <!-- ======== GAME 03 · LE BON CHANTIER ======== -->
 <section class="module" id="chantier" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 03 / 06</span>
+    <span class="mod-n">Défi 03 / 09</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 12</span>
@@ -3704,7 +3940,7 @@ input[type=range]{
 <!-- ======== GAME 04 · GESTES DANS L'ORDRE ======== -->
 <section class="module" id="gestes" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 04 / 06</span>
+    <span class="mod-n">Défi 04 / 09</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 13</span>
@@ -3734,7 +3970,7 @@ input[type=range]{
 <!-- ======== DÉFI 05 · MOTS CROISÉS ======== -->
 <section class="module" id="motscroises" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 05 / 06</span>
+    <span class="mod-n">Défi 05 / 09</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 14</span>
@@ -3775,7 +4011,7 @@ input[type=range]{
 <!-- ======== DÉFI 06 · ANAGRAMMES ======== -->
 <section class="module" id="anagrammes" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 06 / 06</span>
+    <span class="mod-n">Défi 06 / 09</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 15</span>
@@ -3795,6 +4031,101 @@ input[type=range]{
 </section>
 
 
+<!-- ======== DÉFI 07 · DEVINETTES ======== -->
+<section class="module" id="devinettes" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 07 / 09</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 16</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Qui <em>suis-je</em> ?</h2>
+    <p class="module-lead">Huit devinettes sur l'atelier. Chaque énigme décrit une pièce, un mode ou un outil — à toi de trouver. <span class="click-cta">Clique sur la bonne réponse</span> ; tu sauras tout de suite si tu as juste.</p>
+  </div>
+  <div class="widget-host reveal"><div class="fig-label">Fig. 16.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">Lis, devine, clique</div>
+      <div class="widget-meta">8 ÉNIGMES</div>
+    </div>
+    <div class="devine-stage">
+      <div class="devine-progress" id="devineProgress"></div>
+      <div class="devine-num" id="devineNum">Énigme 01 / 08</div>
+      <div class="devine-clue" id="devineClue">—</div>
+      <div class="devine-opts" id="devineOpts"></div>
+      <div class="devine-fb" id="devineFb"></div>
+      <div class="devine-nav">
+        <span class="devine-counter" id="devineCounter">0 bonnes réponses</span>
+        <button class="devine-next" id="devineNext" style="display:none;">Suivante →</button>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+
+<!-- ======== DÉFI 08 · TROUVE L'INTRUS ======== -->
+<section class="module" id="intrus" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 08 / 09</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 17</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Trouve l'<em>intrus</em></h2>
+    <p class="module-lead">Cinq manches, quatre items dans chacune. Un seul ne va pas avec les autres. <span class="click-cta">Clique sur l'intrus</span> pour valider ta réponse.</p>
+  </div>
+  <div class="widget-host reveal"><div class="fig-label">Fig. 17.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">Repère l'élément étranger</div>
+      <div class="widget-meta">5 MANCHES</div>
+    </div>
+    <div class="intrus-stage">
+      <div class="intrus-q" id="intrusQ">—</div>
+      <div class="intrus-grid" id="intrusGrid"></div>
+      <div class="intrus-fb" id="intrusFb"></div>
+      <div class="devine-nav">
+        <span class="devine-counter" id="intrusCounter">Manche 1 / 5</span>
+        <button class="devine-next" id="intrusNext" style="display:none;">Manche suivante →</button>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+
+<!-- ======== DÉFI 09 · LE BON RÉGLAGE ======== -->
+<section class="module" id="reglage" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 09 / 09</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 18</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Le bon <em>réglage</em></h2>
+    <p class="module-lead">Quatre situations de chantier. Pour chacune, choisis le <strong>mode</strong>, le <strong>couple</strong> et la <strong>vitesse</strong> qui correspondent. <span class="click-cta">Clique sur chaque option</span> puis valide.</p>
+  </div>
+  <div class="widget-host reveal"><div class="fig-label">Fig. 18.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">Règle ta perceuse pour la mission</div>
+      <div class="widget-meta">4 SCÉNARIOS</div>
+    </div>
+    <div class="reg-stage">
+      <div class="reg-scenario" id="regScenario">—</div>
+      <div class="reg-controls" id="regControls"></div>
+      <div class="reg-fb" id="regFb"></div>
+      <div class="reg-actions">
+        <button id="regValidate">Valider</button>
+        <button id="regNext" style="display:none;">Suivant →</button>
+        <button id="regRestart" style="display:none;">Recommencer</button>
+      </div>
+      <div class="devine-nav" style="margin-top:14px;">
+        <span class="devine-counter" id="regCounter">Scénario 1 / 4</span>
+      </div>
+    </div>
+  </div></div>
+</section>
+
 
 <!-- ======== COLOPHON ======== -->
 <footer class="colophon">
@@ -3813,14 +4144,14 @@ input[type=range]{
   <div class="colophon-grid">
     <div class="colo-col">
       <h5>L'édition</h5>
-      <p>Manuel interactif en neuf modules plus six défis bonus sur la perceuse-visseuse — destiné aux élèves du cycle 4 et aux enseignants qui veulent un support zéro-PowerPoint.</p>
+      <p>Manuel interactif en neuf modules plus neuf défis bonus sur la perceuse-visseuse — destiné aux élèves du cycle 4 et aux enseignants qui veulent un support zéro-PowerPoint.</p>
     </div>
     <div class="colo-col">
       <h5>Détails</h5>
       <ul>
         <li><span>Édition</span><strong>№ 01 · 2026</strong></li>
         <li><span>Niveau</span><strong>4ᵉ / 3ᵉ</strong></li>
-        <li><span>Modules</span><strong>9 + 6 défis</strong></li>
+        <li><span>Modules</span><strong>9 + 9 défis</strong></li>
         <li><span>Durée</span><strong>~60 min</strong></li>
       </ul>
     </div>
@@ -4235,6 +4566,103 @@ input[type=range]{
   apply('right');
 })();
 
+/* ============ DÉFI LOCK SYSTEM ============ */
+(function(){
+  const THRESHOLD = 70; // % to unlock next
+  const SECTIONS = [
+    {id:'quiz',         idx:1, label:'Quiz éclair',   prev:null},
+    {id:'memory',       idx:2, label:'Mémory',        prev:'Quiz éclair'},
+    {id:'chantier',     idx:3, label:'Bon chantier',  prev:'Mémory'},
+    {id:'gestes',       idx:4, label:'Gestes ordre',  prev:'Bon chantier'},
+    {id:'motscroises',  idx:5, label:'Mots croisés',  prev:'Gestes ordre'},
+    {id:'anagrammes',   idx:6, label:'Anagrammes',    prev:'Mots croisés'},
+    {id:'devinettes',   idx:7, label:'Devinettes',    prev:'Anagrammes'},
+    {id:'intrus',       idx:8, label:'Trouve l\'intrus', prev:'Devinettes'},
+    {id:'reglage',      idx:9, label:'Bon réglage',   prev:'Trouve l\'intrus'}
+  ];
+  const STORAGE_KEY = 'atelier-perceuse-defis-v1';
+  const state = { unlocked: {1:true,2:true,3:true,4:true,5:true,6:true,7:true,8:true,9:true}, scores: {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0} };
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const saved = JSON.parse(raw);
+      if(saved.scores) Object.assign(state.scores, saved.scores);
+    }
+  }catch(e){}
+  // All challenges unlocked for now
+  for(let i=1;i<=9;i++) state.unlocked[i] = true;
+
+  function persist(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  function applyLocks(){
+    SECTIONS.forEach(s=>{
+      const sec = document.getElementById(s.id);
+      if(!sec) return;
+      const locked = !state.unlocked[s.idx];
+      sec.classList.toggle('defi-locked', locked);
+      // Existing overlay?
+      let ov = sec.querySelector('.defi-lock-overlay');
+      const wh = sec.querySelector('.widget-host');
+      if(!wh) return;
+      if(locked){
+        const prevScore = Math.round(state.scores[s.idx-1] || 0);
+        if(!ov){
+          ov = document.createElement('div');
+          ov.className = 'defi-lock-overlay';
+          wh.appendChild(ov);
+        }
+        ov.innerHTML = `
+          <div class="defi-lock-inner">
+            <div class="defi-lock-icon">🔒</div>
+            <div class="defi-lock-title">Défi verrouillé</div>
+            <div class="defi-lock-msg">Termine <strong>${s.prev}</strong> à <strong>${THRESHOLD}% minimum</strong> pour débloquer ce défi.</div>
+            <div class="defi-lock-score">Ton meilleur score sur le précédent : <b>${prevScore}%</b></div>
+          </div>`;
+      } else {
+        if(ov) ov.remove();
+      }
+      // Status badge in folio
+      const folio = sec.querySelector('.module-folio');
+      if(folio){
+        let badge = folio.querySelector('.defi-status-badge');
+        const score = Math.round(state.scores[s.idx] || 0);
+        if(locked){
+          if(!badge){ badge = document.createElement('span'); badge.className='defi-status-badge'; folio.appendChild(badge); }
+          badge.className = 'defi-status-badge locked';
+          badge.textContent = '🔒 Verrouillé';
+        } else if(score >= THRESHOLD){
+          if(!badge){ badge = document.createElement('span'); badge.className='defi-status-badge'; folio.appendChild(badge); }
+          badge.className = 'defi-status-badge done';
+          badge.textContent = `✓ ${score}%`;
+        } else if(badge){
+          badge.remove();
+        }
+      }
+    });
+  }
+
+  function report(idx, pct){
+    pct = Math.max(0, Math.min(100, Math.round(pct)));
+    state.scores[idx] = Math.max(state.scores[idx] || 0, pct);
+    if(pct >= THRESHOLD && idx < SECTIONS.length){
+      state.unlocked[idx+1] = true;
+    }
+    persist();
+    applyLocks();
+  }
+
+  // Expose to game scripts
+  window.reportDefiScore = report;
+  // Apply locks on load
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', applyLocks);
+  } else {
+    applyLocks();
+  }
+})();
+
 /* ============ GAME 05 · MOTS CROISÉS ============ */
 (function(){
   const gridEl=document.getElementById('xwordGrid');
@@ -4269,8 +4697,6 @@ input[type=range]{
     gridEl.innerHTML='';
     gridEl.style.gridTemplateColumns=`repeat(${COLS}, 38px)`;
     for(let r=0;r<ROWS;r++){
-      const row=document.createElement('div');
-      row.className='xword-row';
       for(let c=0;c<COLS;c++){
         const cell=document.createElement('div');
         cell.className='xword-cell';
@@ -4309,9 +4735,8 @@ input[type=range]{
             else if(e.key==='ArrowUp'){move(r,c,-1,0);e.preventDefault();}
           });
         }
-        row.appendChild(cell);
+        gridEl.appendChild(cell);
       }
-      gridEl.appendChild(row);
     }
     highlight();
   }
@@ -4421,6 +4846,9 @@ input[type=range]{
       res.textContent=`${solved} / ${WORDS.length} mots trouvés. Les cases vertes sont justes, les rouges à corriger.`;
       res.classList.add('show','partial');
     }
+    // Report progression: % = mots résolus / total
+    const solvedCount=document.querySelectorAll('.xword-clue-list li.solved').length;
+    if(window.reportDefiScore) window.reportDefiScore(5, (solvedCount/WORDS.length)*100);
   }
   function reveal(){
     if(selR<0){alert('Sélectionne d\'abord une case dans la grille.');return;}
@@ -4488,6 +4916,9 @@ input[type=range]{
         card.classList.add('solved');
         fb.textContent=`✓ ${p.answer} — bravo !`;
         inp.value=p.answer;inp.disabled=true;
+        // Report aggregate progress
+        const solved=document.querySelectorAll('.anag-card.solved').length;
+        if(window.reportDefiScore) window.reportDefiScore(6, (solved/PUZZLES.length)*100);
       }else{
         fb.textContent=`✗ "${v}" — essaie encore`;
         inp.style.animation='shake 0.4s';
@@ -4503,6 +4934,331 @@ input[type=range]{
   const sty=document.createElement('style');
   sty.textContent='@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}';
   document.head.appendChild(sty);
+})();
+
+/* ============ GAME 07 · DEVINETTES ============ */
+(function(){
+  const stage=document.getElementById('devineClue');
+  if(!stage)return;
+  const QUESTIONS=[
+    {q:"Je suis en métal, j'ai trois mors et je serre fermement ce qui perce. Qui suis-je ?",
+     opts:["La gâchette","Le mandrin","La poignée","Le couple"],ok:1,
+     expl:"Le mandrin : pièce métallique à 3 mors qui tient le foret ou l'embout."},
+    {q:"Je suis une bague crantée numérotée de 1 à 15 et plus. Je règle la force de serrage. Qui suis-je ?",
+     opts:["La bague de mode","La bague de couple","Le mandrin","L'inverseur"],ok:1,
+     expl:"La bague de couple (limiteur de couple) : empêche les vis de s'enfoncer trop fort."},
+    {q:"Sans moi, la planche risque de fendre quand on visse près du bord. Qui suis-je ?",
+     opts:["Le serre-joint","La bague","L'avant-trou","La percussion"],ok:2,
+     expl:"L'avant-trou : un petit trou pilote pré-percé qui guide la vis et évite le fendage."},
+    {q:"Je suis le mode représenté par un petit marteau sur la bague. À quoi sers-je ?",
+     opts:["À visser","À percer le bois","À percer le béton","À reculer le foret"],ok:2,
+     expl:"Le mode percussion ajoute des coups d'impact pour casser le béton et la maçonnerie."},
+    {q:"Je suis un bouton sur le manche, à gauche ou à droite. Je fais reculer le foret. Qui suis-je ?",
+     opts:["La gâchette","Le sélecteur de vitesse","L'inverseur de sens","La bague de couple"],ok:2,
+     expl:"L'inverseur de sens : choisit entre vissage (avant) et dévissage / dégagement (arrière)."},
+    {q:"Je suis le matériau extrêmement dur de la pastille au bout d'un foret béton. Qui suis-je ?",
+     opts:["L'acier","Le carbure (de tungstène)","Le titane","Le cuivre"],ok:1,
+     expl:"Le carbure de tungstène : plus dur que l'acier, il résiste aux chocs sur le béton."},
+    {q:"Je suis sur le dessus, je porte les chiffres 1 et 2. Que change-je ?",
+     opts:["Le sens de rotation","La vitesse de rotation","Le couple","Le mode"],ok:1,
+     expl:"Le sélecteur de vitesse : position 1 = lent et puissant, position 2 = rapide."},
+    {q:"Je suis ton meilleur ami pour les yeux et je suis souvent obligatoire à l'atelier. Qui suis-je ?",
+     opts:["Les bouchons d'oreille","Les gants","Les lunettes de protection","Le tablier"],ok:2,
+     expl:"Les lunettes de protection : un copeau dans l'œil et c'est terminé. Toujours les mettre."}
+  ];
+  const progress=document.getElementById('devineProgress');
+  const num=document.getElementById('devineNum');
+  const clue=document.getElementById('devineClue');
+  const opts=document.getElementById('devineOpts');
+  const fb=document.getElementById('devineFb');
+  const counter=document.getElementById('devineCounter');
+  const nextBtn=document.getElementById('devineNext');
+  let idx=0,results=[];
+
+  function renderProgress(){
+    progress.innerHTML='';
+    for(let i=0;i<QUESTIONS.length;i++){
+      const d=document.createElement('div');
+      d.className='devine-dot';
+      if(i===idx)d.classList.add('current');
+      if(results[i]===true)d.classList.add('right');
+      else if(results[i]===false)d.classList.add('wrong');
+      progress.appendChild(d);
+    }
+  }
+  function showQ(){
+    if(idx>=QUESTIONS.length){
+      const correct=results.filter(r=>r===true).length;
+      clue.textContent=`Terminé ! ${correct} / ${QUESTIONS.length} bonnes réponses.`;
+      opts.innerHTML='';
+      fb.innerHTML=correct>=6?`<strong>Bravo !</strong> Tu maîtrises bien le vocabulaire de l'atelier.`:
+                   correct>=4?`<strong>Pas mal.</strong> Quelques notions à revoir dans les modules.`:
+                   `<strong>À retravailler.</strong> Relis les modules 1 à 4 puis rejoue.`;
+      fb.classList.add('show');
+      num.textContent='Récapitulatif';
+      nextBtn.textContent='Recommencer';nextBtn.style.display='inline-flex';
+      nextBtn.onclick=()=>{idx=0;results=[];fb.classList.remove('show');nextBtn.textContent='Suivante →';nextBtn.onclick=advance;showQ();};
+      counter.textContent=correct+' / '+QUESTIONS.length+' bonnes réponses';
+      renderProgress();
+      return;
+    }
+    const Q=QUESTIONS[idx];
+    num.textContent=`Énigme ${String(idx+1).padStart(2,'0')} / ${String(QUESTIONS.length).padStart(2,'0')}`;
+    clue.textContent=Q.q;
+    opts.innerHTML='';fb.classList.remove('show');
+    nextBtn.style.display='none';
+    Q.opts.forEach((o,i)=>{
+      const b=document.createElement('button');
+      b.className='devine-opt';b.textContent=o;
+      b.addEventListener('click',()=>pick(i,b));
+      opts.appendChild(b);
+    });
+    const correct=results.filter(r=>r===true).length;
+    counter.textContent=correct+' bonne'+(correct>1?'s':'')+' réponse'+(correct>1?'s':'');
+    renderProgress();
+  }
+  function pick(i,btn){
+    const Q=QUESTIONS[idx];
+    const allBtns=opts.querySelectorAll('.devine-opt');
+    allBtns.forEach(b=>b.disabled=true);
+    const ok=i===Q.ok;
+    if(ok){btn.classList.add('right');}
+    else{btn.classList.add('wrong');allBtns[Q.ok].classList.add('right');}
+    results[idx]=ok;
+    fb.innerHTML=(ok?'<strong>Bonne réponse !</strong> ':'<strong>Raté.</strong> ')+Q.expl;
+    fb.classList.add('show');
+    nextBtn.style.display='inline-flex';
+    nextBtn.textContent=idx===QUESTIONS.length-1?'Voir le score':'Suivante →';
+    renderProgress();
+  }
+  function advance(){idx++;showQ();}
+  nextBtn.onclick=advance;
+  showQ();
+})();
+
+/* ============ GAME 08 · TROUVE L'INTRUS ============ */
+(function(){
+  const grid=document.getElementById('intrusGrid');
+  if(!grid)return;
+  // SVG icons (small inline). Each item: {label, svg, family}
+  const ICONS={
+    foretBois:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="8" r="4" fill="currentColor" opacity="0.3"/><path d="M20 12 L20 34 M16 14 L24 18 M16 20 L24 24 M16 26 L24 30"/></svg>',
+    foretMetal:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="17" y="6" width="6" height="10" fill="currentColor" opacity="0.4"/><path d="M20 16 L20 34 M16 19 L24 22 M16 26 L24 29"/></svg>',
+    foretBeton:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6 L26 6 L23 14 L17 14 Z" fill="currentColor" opacity="0.4"/><path d="M20 14 L20 34 M16 18 L24 21 M16 24 L24 27"/></svg>',
+    vis:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="8" r="5" fill="currentColor" opacity="0.3"/><line x1="17" y1="6" x2="23" y2="10"/><line x1="23" y1="6" x2="17" y2="10"/><path d="M20 13 L20 34 M17 16 L23 18 M17 20 L23 22 M17 24 L23 26 M17 28 L23 30"/></svg>',
+    visBois:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6 L26 6 L26 11 L14 11 Z" fill="currentColor" opacity="0.3"/><line x1="18" y1="8" x2="22" y2="10" stroke-width="1.4"/><path d="M20 11 L20 33 L17 36 M20 15 L17 17 M20 19 L17 21 M20 23 L17 25 M20 27 L17 29"/></svg>',
+    visPlaco:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6 L26 6 L26 10 L14 10 Z" fill="currentColor" opacity="0.3"/><circle cx="20" cy="8" r="1.5" fill="currentColor"/><path d="M20 10 L20 33 M16 14 L24 17 M16 19 L24 22 M16 24 L24 27 M20 33 L18 36"/></svg>',
+    visTerrasse:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="6" r="3" fill="currentColor" opacity="0.4"/><path d="M20 9 L20 34 M15 13 L25 16 M15 18 L25 21 M15 23 L25 26 M15 28 L25 31 M20 34 L18 37"/></svg>',
+    marteau:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="10" y="8" width="20" height="8" fill="currentColor" opacity="0.4" rx="1"/><rect x="18" y="16" width="4" height="20" fill="currentColor" opacity="0.3"/></svg>',
+    percage:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 8 L20 32 M16 12 L24 15 M16 18 L24 21 M16 24 L24 27"/><circle cx="20" cy="34" r="2" fill="currentColor"/></svg>',
+    vissage:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M28 12 L20 8 L12 12 L12 22 L20 26 L28 22 Z" fill="currentColor" opacity="0.3"/><line x1="20" y1="14" x2="20" y2="20" stroke-width="2.5"/></svg>',
+    percussion:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="14" y="10" width="16" height="6" fill="currentColor" opacity="0.4" rx="1"/><rect x="20" y="16" width="3" height="14" fill="currentColor" opacity="0.3"/><path d="M10 22 L8 24 M30 22 L32 24" stroke-width="1.2"/></svg>',
+    inverseur:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 14 L30 14 M10 14 L14 10 M10 14 L14 18"/><path d="M30 26 L10 26 M30 26 L26 22 M30 26 L26 30"/></svg>',
+    lunettes:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="13" cy="20" r="6"/><circle cx="27" cy="20" r="6"/><path d="M19 20 L21 20"/></svg>',
+    gants:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 18 L14 30 L26 30 L26 14 M14 18 L14 12 L17 12 L17 18 M17 18 L17 10 L20 10 L20 18 M20 18 L20 11 L23 11 L23 18 M23 18 L23 14 L26 14"/></svg>',
+    chaussures:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 22 L8 28 L32 28 L32 24 L24 20 L20 16 L14 16 L14 22 Z" fill="currentColor" opacity="0.3"/></svg>',
+    cigarette:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="10" y="22" width="22" height="3" fill="currentColor" opacity="0.4"/><rect x="26" y="22" width="6" height="3" fill="currentColor" opacity="0.7"/><path d="M14 18 Q15 14 14 10 M18 18 Q19 14 18 10" opacity="0.5"/></svg>',
+    empPlate:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="12"/><rect x="10" y="19" width="20" height="2" fill="currentColor"/></svg>',
+    empCruci:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="12"/><path d="M10 20 L30 20 M20 10 L20 30" stroke-width="2"/></svg>',
+    empTorx:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="12"/><path d="M20 12 L22 18 L28 18 L23 22 L25 28 L20 24 L15 28 L17 22 L12 18 L18 18 Z" fill="currentColor" opacity="0.5"/></svg>',
+    empRonde:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="12"/><circle cx="20" cy="20" r="3" fill="currentColor"/></svg>'
+  };
+  const ROUNDS=[
+    {q:'Lequel n\'est pas un <em>foret pour le bois</em> ?',
+     items:[
+       {label:'Foret bois',svg:ICONS.foretBois,intrus:false},
+       {label:'Foret bois',svg:ICONS.foretBois,intrus:false},
+       {label:'Foret bois',svg:ICONS.foretBois,intrus:false},
+       {label:'Foret métal',svg:ICONS.foretMetal,intrus:true,why:"Le foret métal n'est pas adapté au bois : sa pointe centrale n'aide pas à se positionner sur du bois tendre."}
+     ]},
+    {q:'Lequel n\'est <em>pas un mode</em> de la perceuse ?',
+     items:[
+       {label:'Perçage',svg:ICONS.percage,intrus:false},
+       {label:'Vissage',svg:ICONS.vissage,intrus:false},
+       {label:'Percussion',svg:ICONS.percussion,intrus:false},
+       {label:'Inverseur',svg:ICONS.inverseur,intrus:true,why:"L'inverseur change le sens (avant/arrière), pas le mode. Il n'est pas sur la bague de mode."}
+     ]},
+    {q:'Lequel n\'est <em>pas une vis</em> ?',
+     items:[
+       {label:'Vis à bois',svg:ICONS.visBois,intrus:false},
+       {label:'Vis placo',svg:ICONS.visPlaco,intrus:false},
+       {label:'Vis terrasse',svg:ICONS.visTerrasse,intrus:false},
+       {label:'Marteau',svg:ICONS.marteau,intrus:true,why:"Le marteau est un outil de frappe, pas une vis. Il n'a pas de filetage."}
+     ]},
+    {q:'Lequel <em>ne va pas à l\'atelier</em> ?',
+     items:[
+       {label:'Lunettes',svg:ICONS.lunettes,intrus:false},
+       {label:'Gants',svg:ICONS.gants,intrus:false},
+       {label:'Chaussures fermées',svg:ICONS.chaussures,intrus:false},
+       {label:'Cigarette',svg:ICONS.cigarette,intrus:true,why:"Fumer à l'atelier est interdit : poussière, copeaux, solvants. Et la cendre dans les yeux, c'est non."}
+     ]},
+    {q:'Laquelle n\'est <em>pas une empreinte de vis</em> ?',
+     items:[
+       {label:'Plate',svg:ICONS.empPlate,intrus:false},
+       {label:'Cruciforme',svg:ICONS.empCruci,intrus:false},
+       {label:'Torx (étoile)',svg:ICONS.empTorx,intrus:false},
+       {label:'Ronde',svg:ICONS.empRonde,intrus:true,why:"Une empreinte ronde ne pourrait pas transmettre la rotation : l'embout tournerait dans le vide !"}
+     ]}
+  ];
+  const qEl=document.getElementById('intrusQ');
+  const fb=document.getElementById('intrusFb');
+  const counter=document.getElementById('intrusCounter');
+  const nextBtn=document.getElementById('intrusNext');
+  let idx=0,correct=0;
+
+  function show(){
+    if(idx>=ROUNDS.length){
+      qEl.innerHTML='Terminé !';
+      grid.innerHTML='';
+      fb.innerHTML=correct===ROUNDS.length?`<strong>Score parfait :</strong> ${correct} / ${ROUNDS.length}. Tu as l'œil !`:
+                   `<strong>Score :</strong> ${correct} / ${ROUNDS.length}. Tu peux rejouer pour t'améliorer.`;
+      fb.classList.add('show');
+      counter.textContent=correct+' / '+ROUNDS.length;
+      nextBtn.textContent='Recommencer';nextBtn.style.display='inline-flex';
+      nextBtn.onclick=()=>{idx=0;correct=0;fb.classList.remove('show');nextBtn.textContent='Manche suivante →';nextBtn.onclick=advance;show();};
+      return;
+    }
+    const R=ROUNDS[idx];
+    qEl.innerHTML=R.q;
+    grid.innerHTML='';fb.classList.remove('show');
+    nextBtn.style.display='none';
+    // Shuffle items
+    const items=R.items.map((it,i)=>({...it,origIdx:i})).sort(()=>Math.random()-0.5);
+    items.forEach(item=>{
+      const b=document.createElement('button');
+      b.className='intrus-item';
+      b.innerHTML=`<div class="intrus-icon">${item.svg}</div><div class="intrus-label">${item.label}</div>`;
+      b.addEventListener('click',()=>{
+        grid.querySelectorAll('.intrus-item').forEach(x=>x.disabled=true);
+        if(item.intrus){
+          b.classList.add('right');correct++;
+          fb.innerHTML=`<strong>Bien vu !</strong> ${item.why}`;
+        }else{
+          b.classList.add('wrong');
+          const intrusItem=items.find(it=>it.intrus);
+          fb.innerHTML=`<strong>Non.</strong> L'intrus était : <strong>${intrusItem.label}</strong>. ${intrusItem.why}`;
+          grid.querySelectorAll('.intrus-item').forEach((x,j)=>{
+            if(items[j].intrus)x.classList.add('shown-right');
+          });
+        }
+        fb.classList.add('show');
+        nextBtn.style.display='inline-flex';
+        nextBtn.textContent=idx===ROUNDS.length-1?'Voir le score':'Manche suivante →';
+      });
+      grid.appendChild(b);
+    });
+    counter.textContent=`Manche ${idx+1} / ${ROUNDS.length}`;
+  }
+  function advance(){idx++;show();}
+  nextBtn.onclick=advance;
+  show();
+})();
+
+/* ============ GAME 09 · LE BON RÉGLAGE ============ */
+(function(){
+  const scenarioEl=document.getElementById('regScenario');
+  if(!scenarioEl)return;
+  const SCENARIOS=[
+    {
+      ctx:"Tu dois visser des <strong>vis de 50 mm</strong> dans un montant en <strong>chêne</strong> (bois dur) pour fixer une étagère.",
+      controls:[
+        {label:'Mode',opts:['Perçage','Vissage','Percussion'],ok:1,why:"Vissage : on enfonce une vis dans du bois, pas besoin de percussion."},
+        {label:'Couple',opts:['1 — 3','4 — 6','7 — 9','10 — 12','15 / drill'],ok:3,why:"Couple élevé (10—12) : le chêne est dur, la vis a besoin de force pour s'enfoncer, mais pas drill (limiteur désactivé)."},
+        {label:'Vitesse',opts:['1 (lent)','2 (rapide)'],ok:0,why:"Vitesse 1 : lent et puissant, idéal pour visser avec contrôle."}
+      ]
+    },
+    {
+      ctx:"Tu veux percer un trou de <strong>Ø 10 mm</strong> dans une planche de <strong>sapin</strong> pour faire passer un câble.",
+      controls:[
+        {label:'Mode',opts:['Perçage','Vissage','Percussion'],ok:0,why:"Perçage : on creuse un trou, pas besoin d'impact."},
+        {label:'Couple',opts:['1 — 3','4 — 6','7 — 9','10 — 12','15 / drill'],ok:4,why:"Position drill : couple maxi, pas de limitation. C'est nécessaire pour un perçage sans débrayage."},
+        {label:'Vitesse',opts:['1 (lent)','2 (rapide)'],ok:0,why:"Vitesse 1 pour amorcer proprement le foret hélicoïdal sur du sapin sans qu'il dérape."}
+      ]
+    },
+    {
+      ctx:"Tu veux fixer une étagère murale sur un mur en <strong>béton</strong>. Tu dois percer pour insérer des chevilles.",
+      controls:[
+        {label:'Mode',opts:['Perçage','Vissage','Percussion'],ok:2,why:"Percussion : indispensable pour casser le béton. En mode perçage simple, le foret ne pénètre pas."},
+        {label:'Couple',opts:['1 — 3','4 — 6','7 — 9','10 — 12','15 / drill'],ok:4,why:"Drill : aucun limiteur, le foret a besoin de toute la puissance."},
+        {label:'Vitesse',opts:['1 (lent)','2 (rapide)'],ok:0,why:"Vitesse 1 : la percussion est plus efficace à basse vitesse, et le foret béton chauffe moins."}
+      ]
+    },
+    {
+      ctx:"Tu visses des <strong>petites vis à bois de 16 mm</strong> dans du contreplaqué fin (5 mm), assez fragile.",
+      controls:[
+        {label:'Mode',opts:['Perçage','Vissage','Percussion'],ok:1,why:"Vissage évidemment."},
+        {label:'Couple',opts:['1 — 3','4 — 6','7 — 9','10 — 12','15 / drill'],ok:1,why:"Couple faible (4—6) : le contreplaqué fin se fend si on force ; le limiteur stoppe la vissage à temps."},
+        {label:'Vitesse',opts:['1 (lent)','2 (rapide)'],ok:1,why:"Vitesse 2 : petites vis courtes, ça va vite. Et avec un couple bas, pas de risque d'arrachement."}
+      ]
+    }
+  ];
+  const ctrls=document.getElementById('regControls');
+  const fb=document.getElementById('regFb');
+  const counter=document.getElementById('regCounter');
+  const valBtn=document.getElementById('regValidate');
+  const nextBtn=document.getElementById('regNext');
+  const restartBtn=document.getElementById('regRestart');
+  let idx=0,picks={},validated=false,totalScore=0;
+
+  function show(){
+    validated=false;picks={};
+    const S=SCENARIOS[idx];
+    scenarioEl.innerHTML=S.ctx;
+    ctrls.innerHTML='';
+    S.controls.forEach((ctrl,ci)=>{
+      const div=document.createElement('div');
+      div.className='reg-ctrl';
+      div.innerHTML=`<div class="reg-ctrl-label">${ctrl.label}</div><div class="reg-opts" data-ci="${ci}">${
+        ctrl.opts.map((o,oi)=>`<button class="reg-opt" data-oi="${oi}">${o}</button>`).join('')
+      }</div>`;
+      ctrls.appendChild(div);
+      div.querySelectorAll('.reg-opt').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          if(validated)return;
+          div.querySelectorAll('.reg-opt').forEach(x=>x.classList.remove('sel'));
+          btn.classList.add('sel');
+          picks[ci]=parseInt(btn.dataset.oi);
+          valBtn.disabled=Object.keys(picks).length<S.controls.length;
+        });
+      });
+    });
+    fb.classList.remove('show');
+    valBtn.disabled=true;valBtn.style.display='inline-flex';
+    nextBtn.style.display='none';restartBtn.style.display='none';
+    counter.textContent=`Scénario ${idx+1} / ${SCENARIOS.length} · Score : ${totalScore}/12`;
+  }
+  function validate(){
+    if(validated)return;validated=true;
+    const S=SCENARIOS[idx];
+    let got=0,html='';
+    ctrls.querySelectorAll('.reg-opts').forEach(grp=>{
+      const ci=parseInt(grp.dataset.ci);
+      const ctrl=S.controls[ci];
+      grp.querySelectorAll('.reg-opt').forEach(btn=>btn.disabled=true);
+      const selBtn=grp.querySelector('.reg-opt.sel');
+      const okBtn=grp.querySelector('.reg-opt[data-oi="'+ctrl.ok+'"]');
+      okBtn.classList.add('right');
+      if(selBtn && parseInt(selBtn.dataset.oi)===ctrl.ok){got++;}
+      else if(selBtn){selBtn.classList.add('wrong');}
+      html+=`<div style="margin:8px 0;"><strong>${ctrl.label} :</strong> ${ctrl.why}</div>`;
+    });
+    totalScore+=got;
+    fb.innerHTML=`<h5>${got} / 3 bons réglages pour ce scénario</h5>${html}`;
+    fb.classList.add('show');
+    valBtn.style.display='none';
+    if(idx<SCENARIOS.length-1){nextBtn.style.display='inline-flex';}
+    else{
+      const pct=totalScore/12;
+      const grade=pct>=0.9?'Régleur expert 🏆':pct>=0.7?'Bien joué, prêt à régler ta perceuse':pct>=0.5?'Pas mal, encore des réflexes à acquérir':'Relis le module 02 (couple) et 03 (technique)';
+      fb.innerHTML+=`<h5 style="margin-top:14px;">Score final : ${totalScore} / 12 — ${grade}</h5>`;
+      restartBtn.style.display='inline-flex';
+    }
+    counter.textContent=`Scénario ${idx+1} / ${SCENARIOS.length} · Score : ${totalScore}/12`;
+  }
+  valBtn.addEventListener('click',validate);
+  nextBtn.addEventListener('click',()=>{idx++;show();});
+  restartBtn.addEventListener('click',()=>{idx=0;totalScore=0;show();});
+  show();
 })();
 
 /* ============ GAME 01 · QUIZ ÉCLAIR ============ */
@@ -4605,6 +5361,7 @@ input[type=range]{
       '</div><h3>'+score+' pts</h3><p>'+['Il y a des bases à revoir dans les modules.','Pas mal. Encore un peu de pratique.','Très bien. Tu maîtrises l\'essentiel.','Parfait. Tu pourrais enseigner !'][stars]+'</p></div>';
     actions.innerHTML='<button class="btn primary" id="quizRestart" data-hover>Rejouer</button>';
     document.getElementById('quizRestart').addEventListener('click',start);
+    if(window.reportDefiScore) window.reportDefiScore(1, pct*100);
   }
 
   startBtn.addEventListener('click',start);
@@ -4688,6 +5445,8 @@ input[type=range]{
     const grade=moves<=optimal+4?'Mémoire d\'éléphant':moves<=optimal+8?'Bien joué':'Un peu plus de concentration la prochaine fois';
     winDetails.textContent=moves+' coups · '+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')+' · '+grade;
     setTimeout(()=>winBox.classList.add('show'),400);
+    // Score = 100% if finished; bonus efficiency could lower it but kept simple
+    if(window.reportDefiScore) window.reportDefiScore(2, 100);
   }
 
   restartBtn.addEventListener('click',build);
@@ -4800,6 +5559,7 @@ input[type=range]{
       endDiv.innerHTML='<h3>'+score+'/12 points</h3><p>'+grade+'</p>';
       stage.appendChild(endDiv);
       restartBtn.style.display='inline-flex';
+      if(window.reportDefiScore) window.reportDefiScore(3, pct*100);
     }
   }
   validateBtn.addEventListener('click',validate);
@@ -4874,6 +5634,7 @@ input[type=range]{
     }
     fb.classList.add('show');
     checkBtn.disabled=true;checkBtn.textContent='Correction affichée';
+    if(window.reportDefiScore) window.reportDefiScore(4, (ok/order.length)*100);
   }
   checkBtn.addEventListener('click',check);
   shuffleBtn.addEventListener('click',shuffleGame);
