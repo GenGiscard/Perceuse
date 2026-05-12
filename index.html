@@ -1744,6 +1744,129 @@ input[type=range]{
 }
 .mode-when li strong{color:var(--text);font-weight:600;}
 
+/* ============================ VRAI/FAUX (Fig. 19) ============================ */
+.vf-stage{padding:22px 24px;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);}
+.vf-progress{display:flex;gap:4px;margin-bottom:18px;}
+.vf-dot{flex:1;height:5px;background:var(--border);border-radius:3px;transition:background 0.3s;}
+.vf-dot.current{background:var(--c5);}
+.vf-dot.right{background:var(--c4);}
+.vf-dot.wrong{background:var(--c3);}
+.vf-num{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--c5);margin-bottom:10px;}
+.vf-statement{
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:clamp(18px,3vw,24px);line-height:1.4;
+  color:var(--text);
+  padding:18px 22px;
+  background:color-mix(in srgb,var(--c5) 6%,transparent);
+  border-left:3px solid var(--c5);
+  border-radius:0 6px 6px 0;
+  margin-bottom:22px;
+  min-height:80px;display:flex;align-items:center;
+}
+.vf-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.vf-btn{
+  padding:16px 18px;
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  font-family:var(--display);font-size:18px;font-weight:700;
+  cursor:pointer;
+  background:var(--surface-2);color:var(--text);
+  transition:all 0.15s;
+}
+.vf-btn[data-v="true"]{border-color:color-mix(in srgb,var(--c4) 50%,var(--border));}
+.vf-btn[data-v="false"]{border-color:color-mix(in srgb,var(--c3) 50%,var(--border));}
+.vf-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 4px 12px rgba(28,26,44,0.10);}
+.vf-btn:disabled{cursor:default;}
+.vf-btn.right{background:color-mix(in srgb,var(--c4) 25%,transparent);border-color:var(--c4);color:#3A6F18;}
+.vf-btn.wrong{background:color-mix(in srgb,var(--c3) 25%,transparent);border-color:var(--c3);color:#8B1F4D;}
+.vf-fb{margin-top:14px;padding:12px 16px;background:var(--surface-2);border-radius:6px;font-size:13px;line-height:1.5;color:var(--text-muted);display:none;}
+.vf-fb.show{display:block;}
+.vf-fb strong{color:var(--text);}
+
+/* ============================ MOTS-MÊLÉS (Fig. 20) ============================ */
+.wsearch-board{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;}
+@media(max-width:760px){.wsearch-board{grid-template-columns:1fr;}}
+.wsearch-grid{
+  display:grid;gap:1px;
+  background:var(--border);padding:1px;
+  border-radius:6px;
+  width:max-content;
+  user-select:none;
+}
+.wsearch-cell{
+  width:30px;height:30px;
+  background:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:700;font-size:14px;
+  color:var(--text);
+  cursor:pointer;
+  transition:background 0.1s;
+  position:relative;
+}
+.wsearch-cell:hover{background:color-mix(in srgb,var(--c5) 12%,var(--paper));}
+.wsearch-cell.start{background:color-mix(in srgb,var(--c5) 35%,#FFF);box-shadow:inset 0 0 0 2px var(--c5);}
+.wsearch-cell.found{background:color-mix(in srgb,var(--c4) 30%,#FFF);color:#3A6F18;}
+.wsearch-cell.preview{background:color-mix(in srgb,var(--c5) 18%,#FFF);}
+.wsearch-list h4{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--c5);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.wsearch-list ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px;}
+.wsearch-list li{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.05em;color:var(--text);padding:5px 8px;background:var(--surface-2);border-radius:4px;}
+.wsearch-list li.found{background:color-mix(in srgb,var(--c4) 18%,transparent);color:var(--c4);text-decoration:line-through;}
+.wsearch-status{margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.08em;}
+
+/* ============================ LE TRI (Fig. 21) ============================ */
+.tri-stage{padding:22px 24px;background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);}
+.tri-instruction{
+  font-family:var(--body);font-size:14px;line-height:1.55;
+  color:var(--text-muted);margin-bottom:18px;
+}
+.tri-instruction strong{color:var(--c5);}
+.tri-pool{
+  display:flex;flex-wrap:wrap;gap:8px;
+  padding:14px;
+  background:var(--surface-2);
+  border-radius:var(--radius);
+  border:1px dashed var(--border);
+  min-height:60px;
+  margin-bottom:20px;
+}
+.tri-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;}
+@media(max-width:640px){.tri-cats{grid-template-columns:1fr;}}
+.tri-cat{
+  padding:14px;
+  background:var(--surface-2);
+  border:2px dashed var(--border);
+  border-radius:var(--radius);
+  min-height:140px;
+  display:flex;flex-direction:column;
+  transition:border-color 0.15s,background 0.15s;
+}
+.tri-cat.target-ready{border-color:var(--c5);background:color-mix(in srgb,var(--c5) 6%,var(--surface-2));border-style:solid;}
+.tri-cat-label{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--c5);text-align:center;margin-bottom:10px;
+  padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+.tri-cat-items{display:flex;flex-wrap:wrap;gap:6px;flex:1;align-content:flex-start;}
+.tri-item{
+  padding:6px 12px;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:20px;
+  font-family:var(--body);font-size:12px;font-weight:600;
+  color:var(--text);
+  cursor:pointer;
+  transition:all 0.15s;
+  white-space:nowrap;
+}
+.tri-item:hover{border-color:var(--c5);transform:translateY(-1px);}
+.tri-item.sel{background:var(--c5);color:#fff;border-color:var(--c5);box-shadow:0 4px 10px color-mix(in srgb,var(--c5) 35%,transparent);}
+.tri-item.right{background:color-mix(in srgb,var(--c4) 22%,transparent);border-color:var(--c4);color:#3A6F18;}
+.tri-item.wrong{background:color-mix(in srgb,var(--c3) 22%,transparent);border-color:var(--c3);color:#8B1F4D;}
+.tri-fb{margin-top:14px;padding:12px 16px;background:var(--surface-2);border-radius:6px;font-size:13px;line-height:1.55;color:var(--text-muted);display:none;}
+.tri-fb.show{display:block;}
+.tri-fb strong{color:var(--text);}
+
 /* ============================ DEVINETTES (Fig. 16) ============================ */
 .devine-stage{
   padding:22px 24px;
@@ -2698,7 +2821,7 @@ input[type=range]{
   </div>
 
   <div class="sommaire">
-    <div class="sommaire-lbl">Sommaire · 4 chapitres · 9 modules · <span style="color:var(--c5);">+ 9 défis bonus</span></div>
+    <div class="sommaire-lbl">Sommaire · 4 chapitres · 9 modules · <span style="color:var(--c5);">+ 12 défis bonus</span></div>
     <div class="chap-grid">
       <a href="#anatomie" class="chap-card" data-c="1">
         <div class="n">01</div>
@@ -2727,8 +2850,8 @@ input[type=range]{
       <a href="#bonus" class="chap-card" data-c="5">
         <div class="n">★</div>
         <div class="ttl"><em>Défis</em> bonus</div>
-        <div class="sub">Quiz · Mémory · Chantier · Gestes · Mots croisés · Anagrammes · Devinettes · Intrus · Réglage</div>
-        <div class="pg">p. 10 → 18</div>
+        <div class="sub">12 défis : quiz, mémory, chantier, gestes, mots croisés, anagrammes, devinettes, intrus, réglage, vrai/faux, mots-mêlés, tri</div>
+        <div class="pg">p. 10 → 21</div>
       </a>
     </div>
   </div>
@@ -3829,10 +3952,10 @@ input[type=range]{
       <div class="chapter-kicker">Chapitre bonus</div>
       <h2 class="chapter-title"><em>Défis</em> pour les plus rapides</h2>
       <p class="chapter-desc">
-        Tu as fini tous les modules ? Bien. Neuf jeux pour consolider — quiz contre la montre, mémory d'atelier, choix d'équipement sur chantier, remise en ordre des gestes, mots croisés, anagrammes, devinettes, trouve l'intrus, et le bon réglage.
+        Tu as fini tous les modules ? Bien. Douze jeux pour consolider et tester tes connaissances sous tous les angles : quiz, mémory, scénarios, ordre des gestes, mots croisés, anagrammes, devinettes, intrus, réglage, vrai-faux, mots-mêlés et tri par catégorie.
       </p>
       <div class="chapter-meta">
-        <span>9 jeux</span><span>Score &amp; chrono</span><span>Rejouables</span><span>~40 min</span>
+        <span>12 jeux</span><span>Progression bloquée</span><span>Score sauvegardé</span><span>~55 min</span>
       </div>
     </div>
   </div>
@@ -3841,7 +3964,7 @@ input[type=range]{
 <!-- ======== GAME 01 · QUIZ ÉCLAIR ======== -->
 <section class="module" id="quiz" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 01 / 09</span>
+    <span class="mod-n">Défi 01 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 10</span>
@@ -3875,7 +3998,7 @@ input[type=range]{
 <!-- ======== GAME 02 · MÉMORY ======== -->
 <section class="module" id="memory" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 02 / 09</span>
+    <span class="mod-n">Défi 02 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 11</span>
@@ -3908,7 +4031,7 @@ input[type=range]{
 <!-- ======== GAME 03 · LE BON CHANTIER ======== -->
 <section class="module" id="chantier" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 03 / 09</span>
+    <span class="mod-n">Défi 03 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 12</span>
@@ -3940,7 +4063,7 @@ input[type=range]{
 <!-- ======== GAME 04 · GESTES DANS L'ORDRE ======== -->
 <section class="module" id="gestes" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 04 / 09</span>
+    <span class="mod-n">Défi 04 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 13</span>
@@ -3970,7 +4093,7 @@ input[type=range]{
 <!-- ======== DÉFI 05 · MOTS CROISÉS ======== -->
 <section class="module" id="motscroises" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 05 / 09</span>
+    <span class="mod-n">Défi 05 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 14</span>
@@ -4011,7 +4134,7 @@ input[type=range]{
 <!-- ======== DÉFI 06 · ANAGRAMMES ======== -->
 <section class="module" id="anagrammes" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 06 / 09</span>
+    <span class="mod-n">Défi 06 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 15</span>
@@ -4034,7 +4157,7 @@ input[type=range]{
 <!-- ======== DÉFI 07 · DEVINETTES ======== -->
 <section class="module" id="devinettes" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 07 / 09</span>
+    <span class="mod-n">Défi 07 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 16</span>
@@ -4066,7 +4189,7 @@ input[type=range]{
 <!-- ======== DÉFI 08 · TROUVE L'INTRUS ======== -->
 <section class="module" id="intrus" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 08 / 09</span>
+    <span class="mod-n">Défi 08 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 17</span>
@@ -4096,7 +4219,7 @@ input[type=range]{
 <!-- ======== DÉFI 09 · LE BON RÉGLAGE ======== -->
 <section class="module" id="reglage" data-c="5">
   <div class="module-folio reveal">
-    <span class="mod-n">Défi 09 / 09</span>
+    <span class="mod-n">Défi 09 / 12</span>
     <span class="mod-chap">Bonus</span>
     <span class="mod-sep"></span>
     <span class="mod-count">Fig. 18</span>
@@ -4127,6 +4250,106 @@ input[type=range]{
 </section>
 
 
+<!-- ======== DÉFI 10 · VRAI OU FAUX ? ======== -->
+<section class="module" id="vraifaux" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 10 / 12</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 19</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Vrai ou <em>faux</em> ?</h2>
+    <p class="module-lead">Dix affirmations sur la perceuse et l'atelier. Certaines sont vraies, d'autres sont des pièges. <span class="click-cta">Clique sur VRAI ou FAUX</span> et regarde l'explication.</p>
+  </div>
+  <div class="widget-host reveal"><div class="fig-label">Fig. 19.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">Réflexes et idées reçues</div>
+      <div class="widget-meta">10 AFFIRMATIONS</div>
+    </div>
+    <div class="vf-stage">
+      <div class="vf-progress" id="vfProgress"></div>
+      <div class="vf-num" id="vfNum">Affirmation 01 / 10</div>
+      <div class="vf-statement" id="vfStatement">—</div>
+      <div class="vf-btns">
+        <button class="vf-btn" data-v="true" id="vfTrue">✓ VRAI</button>
+        <button class="vf-btn" data-v="false" id="vfFalse">✗ FAUX</button>
+      </div>
+      <div class="vf-fb" id="vfFb"></div>
+      <div class="devine-nav">
+        <span class="devine-counter" id="vfCounter">0 / 10</span>
+        <button class="devine-next" id="vfNext" style="display:none;">Suivante →</button>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+
+<!-- ======== DÉFI 11 · MOTS-MÊLÉS ======== -->
+<section class="module" id="motsmeles" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 11 / 12</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 20</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Les mots <em>mêlés</em></h2>
+    <p class="module-lead">Huit mots de l'atelier sont cachés dans une grille de lettres — horizontaux, verticaux ou en diagonale. <span class="click-cta">Clique sur la 1ʳᵉ lettre</span> puis sur la dernière pour valider un mot trouvé.</p>
+  </div>
+  <div class="widget-host reveal"><div class="fig-label">Fig. 20.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">Trouve les huit mots</div>
+      <div class="widget-meta">12 × 12 LETTRES</div>
+    </div>
+    <div class="wsearch-board">
+      <div>
+        <div class="wsearch-grid" id="wsearchGrid"></div>
+        <div class="wsearch-status" id="wsearchStatus">0 / 8 mots trouvés</div>
+      </div>
+      <div class="wsearch-list">
+        <h4>À retrouver</h4>
+        <ul id="wsearchList"></ul>
+      </div>
+    </div>
+    <div class="xword-actions" style="margin-top:16px;">
+      <button id="wsearchReset">Recommencer</button>
+    </div>
+  </div></div>
+</section>
+
+
+<!-- ======== DÉFI 12 · LE TRI ======== -->
+<section class="module" id="tri" data-c="5">
+  <div class="module-folio reveal">
+    <span class="mod-n">Défi 12 / 12</span>
+    <span class="mod-chap">Bonus</span>
+    <span class="mod-sep"></span>
+    <span class="mod-count">Fig. 21</span>
+  </div>
+  <div class="module-head reveal">
+    <h2 class="module-title">Le grand <em>tri</em></h2>
+    <p class="module-lead">Douze items sont mélangés dans le bac. À toi de les ranger dans la bonne catégorie. <span class="click-cta">Clique sur un item</span> pour le sélectionner, puis sur la catégorie où il doit aller. Bouton « Vérifier » à la fin.</p>
+  </div>
+  <div class="widget-host reveal"><div class="fig-label">Fig. 21.1</div><div class="widget reveal">
+    <div class="widget-head">
+      <div class="widget-title">Range chaque chose à sa place</div>
+      <div class="widget-meta">3 CATÉGORIES · 12 ITEMS</div>
+    </div>
+    <div class="tri-stage">
+      <div class="tri-instruction">Pour chaque item, demande-toi : <strong>dans quel matériau</strong> sert-il principalement ? Une vis à bois ne sert pas dans le béton, un foret SDS ne sert pas dans le métal fin.</div>
+      <div class="tri-pool" id="triPool"></div>
+      <div class="tri-cats" id="triCats"></div>
+      <div class="reg-actions">
+        <button id="triCheck">Vérifier</button>
+        <button id="triReset" style="display:none;">Recommencer</button>
+      </div>
+      <div class="tri-fb" id="triFb"></div>
+    </div>
+  </div></div>
+</section>
+
+
 <!-- ======== COLOPHON ======== -->
 <footer class="colophon">
   <div class="colophon-head">
@@ -4144,14 +4367,14 @@ input[type=range]{
   <div class="colophon-grid">
     <div class="colo-col">
       <h5>L'édition</h5>
-      <p>Manuel interactif en neuf modules plus neuf défis bonus sur la perceuse-visseuse — destiné aux élèves du cycle 4 et aux enseignants qui veulent un support zéro-PowerPoint.</p>
+      <p>Manuel interactif en neuf modules plus douze défis bonus sur la perceuse-visseuse — destiné aux élèves du cycle 4 et aux enseignants qui veulent un support zéro-PowerPoint.</p>
     </div>
     <div class="colo-col">
       <h5>Détails</h5>
       <ul>
         <li><span>Édition</span><strong>№ 01 · 2026</strong></li>
         <li><span>Niveau</span><strong>4ᵉ / 3ᵉ</strong></li>
-        <li><span>Modules</span><strong>9 + 9 défis</strong></li>
+        <li><span>Modules</span><strong>9 + 12 défis</strong></li>
         <li><span>Durée</span><strong>~60 min</strong></li>
       </ul>
     </div>
@@ -4570,27 +4793,34 @@ input[type=range]{
 (function(){
   const THRESHOLD = 70; // % to unlock next
   const SECTIONS = [
-    {id:'quiz',         idx:1, label:'Quiz éclair',   prev:null},
-    {id:'memory',       idx:2, label:'Mémory',        prev:'Quiz éclair'},
-    {id:'chantier',     idx:3, label:'Bon chantier',  prev:'Mémory'},
-    {id:'gestes',       idx:4, label:'Gestes ordre',  prev:'Bon chantier'},
-    {id:'motscroises',  idx:5, label:'Mots croisés',  prev:'Gestes ordre'},
-    {id:'anagrammes',   idx:6, label:'Anagrammes',    prev:'Mots croisés'},
-    {id:'devinettes',   idx:7, label:'Devinettes',    prev:'Anagrammes'},
-    {id:'intrus',       idx:8, label:'Trouve l\'intrus', prev:'Devinettes'},
-    {id:'reglage',      idx:9, label:'Bon réglage',   prev:'Trouve l\'intrus'}
+    {id:'quiz',         idx:1,  label:'Quiz éclair',      prev:null,            alwaysOpen:true},
+    {id:'memory',       idx:2,  label:'Mémory',           prev:null,            alwaysOpen:true},
+    {id:'chantier',     idx:3,  label:'Bon chantier',     prev:null,            alwaysOpen:true},
+    {id:'gestes',       idx:4,  label:'Gestes ordre',     prev:'Bon chantier'},
+    {id:'motscroises',  idx:5,  label:'Mots croisés',     prev:'Gestes ordre'},
+    {id:'anagrammes',   idx:6,  label:'Anagrammes',       prev:'Mots croisés'},
+    {id:'devinettes',   idx:7,  label:'Devinettes',       prev:'Anagrammes'},
+    {id:'intrus',       idx:8,  label:'Trouve l\'intrus', prev:'Devinettes'},
+    {id:'reglage',      idx:9,  label:'Bon réglage',      prev:'Trouve l\'intrus'},
+    {id:'vraifaux',     idx:10, label:'Vrai ou Faux',     prev:'Bon réglage'},
+    {id:'motsmeles',    idx:11, label:'Mots-mêlés',       prev:'Vrai ou Faux'},
+    {id:'tri',          idx:12, label:'Le tri',           prev:'Mots-mêlés'}
   ];
-  const STORAGE_KEY = 'atelier-perceuse-defis-v1';
-  const state = { unlocked: {1:true,2:true,3:true,4:true,5:true,6:true,7:true,8:true,9:true}, scores: {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0} };
+  const STORAGE_KEY = 'atelier-perceuse-defis-v2';
+  const state = {
+    unlocked: {1:true,2:true,3:true,4:false,5:false,6:false,7:false,8:false,9:false,10:false,11:false,12:false},
+    scores:   {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0}
+  };
   try{
     const raw = localStorage.getItem(STORAGE_KEY);
     if(raw){
       const saved = JSON.parse(raw);
+      if(saved.unlocked) Object.assign(state.unlocked, saved.unlocked);
       if(saved.scores) Object.assign(state.scores, saved.scores);
     }
   }catch(e){}
-  // All challenges unlocked for now
-  for(let i=1;i<=9;i++) state.unlocked[i] = true;
+  // Force always-open challenges (no prerequisites)
+  SECTIONS.forEach(s=>{ if(s.alwaysOpen) state.unlocked[s.idx] = true; });
 
   function persist(){
     try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
@@ -5259,6 +5489,319 @@ input[type=range]{
   nextBtn.addEventListener('click',()=>{idx++;show();});
   restartBtn.addEventListener('click',()=>{idx=0;totalScore=0;show();});
   show();
+})();
+
+/* ============ GAME 10 · VRAI OU FAUX ============ */
+(function(){
+  const statement=document.getElementById('vfStatement');
+  if(!statement)return;
+  const QUESTIONS=[
+    {q:"Le foret béton a toujours une pointe en carbure de tungstène.",a:true,
+     expl:"Vrai. Le béton est trop dur pour l'acier seul ; la pastille de carbure résiste à l'impact et à l'abrasion."},
+    {q:"On peut percer du métal en mode percussion sans problème.",a:false,
+     expl:"Faux. La percussion détruit la pointe du foret métal et déforme la pièce. Mode perçage uniquement pour le métal."},
+    {q:"Plus le numéro du couple est élevé, plus la force de serrage est grande.",a:true,
+     expl:"Vrai. La bague de couple va de 1 (faible) à 15 ou plus (fort). Au-delà, position « drill » : couple maxi sans limiteur."},
+    {q:"L'inverseur de sens fait varier la vitesse de rotation.",a:false,
+     expl:"Faux. L'inverseur change le sens (avant pour visser, arrière pour dévisser). La vitesse se règle avec le sélecteur 1/2 sur le dessus."},
+    {q:"Il est obligatoire de porter des lunettes de protection à l'atelier.",a:true,
+     expl:"Vrai. Un copeau dans l'œil, et c'est fini. Lunettes systématiques, même pour un trou rapide."},
+    {q:"Pour visser une petite vis dans du contreplaqué fin, on règle un couple élevé.",a:false,
+     expl:"Faux. Couple bas (3 à 6) : si on serre trop fort, la vis arrache le bois fin ou tourne dans le vide."},
+    {q:"Un avant-trou évite que le bois ne fende quand on visse près d'un bord.",a:true,
+     expl:"Vrai. Le foret pré-perce un canal qui guide la vis et libère la pression, évitant le fendage."},
+    {q:"La vitesse 2 du sélecteur est la plus lente et la plus puissante.",a:false,
+     expl:"Faux. C'est l'inverse : vitesse 1 = lent + couple maxi (vissage, gros forets). Vitesse 2 = rapide + couple plus faible (petits trous)."},
+    {q:"Le mandrin sert à régler la profondeur de perçage.",a:false,
+     expl:"Faux. Le mandrin serre le foret. La profondeur se contrôle avec une butée, un scotch de repère ou le retour visuel."},
+    {q:"Il faut retirer le foret en marche avant, pas en arrière, pour ne pas le coincer.",a:true,
+     expl:"Vrai. En reculant avec la perceuse en marche avant, les copeaux s'évacuent par les rainures. En sens inverse, on les rabat dans le trou."}
+  ];
+  const progress=document.getElementById('vfProgress');
+  const num=document.getElementById('vfNum');
+  const tBtn=document.getElementById('vfTrue');
+  const fBtn=document.getElementById('vfFalse');
+  const fb=document.getElementById('vfFb');
+  const counter=document.getElementById('vfCounter');
+  const nextBtn=document.getElementById('vfNext');
+  let idx=0,results=[];
+  function renderProgress(){
+    progress.innerHTML='';
+    for(let i=0;i<QUESTIONS.length;i++){
+      const d=document.createElement('div');d.className='vf-dot';
+      if(i===idx)d.classList.add('current');
+      if(results[i]===true)d.classList.add('right');
+      else if(results[i]===false)d.classList.add('wrong');
+      progress.appendChild(d);
+    }
+  }
+  function show(){
+    if(idx>=QUESTIONS.length){
+      const correct=results.filter(r=>r===true).length;
+      statement.textContent=`Terminé ! ${correct} / ${QUESTIONS.length} bonnes réponses.`;
+      tBtn.style.display='none';fBtn.style.display='none';
+      fb.innerHTML=correct>=7?`<strong>Excellent.</strong> Tu démêles bien le vrai du faux.`:
+                   correct>=5?`<strong>Pas mal.</strong> Quelques pièges à éviter au prochain tour.`:
+                   `<strong>À retravailler.</strong> Relis les modules 1 à 4 avant de rejouer.`;
+      fb.classList.add('show');
+      num.textContent='Bilan';
+      nextBtn.textContent='Recommencer';nextBtn.style.display='inline-flex';
+      nextBtn.onclick=()=>{idx=0;results=[];tBtn.style.display='';fBtn.style.display='';fb.classList.remove('show');nextBtn.textContent='Suivante →';nextBtn.onclick=advance;show();};
+      counter.textContent=correct+' / '+QUESTIONS.length;
+      if(window.reportDefiScore)window.reportDefiScore(10,(correct/QUESTIONS.length)*100);
+      renderProgress();return;
+    }
+    const Q=QUESTIONS[idx];
+    num.textContent=`Affirmation ${String(idx+1).padStart(2,'0')} / ${String(QUESTIONS.length).padStart(2,'0')}`;
+    statement.textContent='« '+Q.q+' »';
+    tBtn.disabled=fBtn.disabled=false;
+    tBtn.classList.remove('right','wrong');fBtn.classList.remove('right','wrong');
+    fb.classList.remove('show');
+    nextBtn.style.display='none';
+    const correct=results.filter(r=>r===true).length;
+    counter.textContent=correct+' / '+QUESTIONS.length;
+    renderProgress();
+  }
+  function pick(v){
+    const Q=QUESTIONS[idx];
+    tBtn.disabled=fBtn.disabled=true;
+    const ok=v===Q.a;
+    const selBtn=v?tBtn:fBtn;
+    const okBtn=Q.a?tBtn:fBtn;
+    if(ok){selBtn.classList.add('right');}
+    else{selBtn.classList.add('wrong');okBtn.classList.add('right');}
+    results[idx]=ok;
+    fb.innerHTML=(ok?'<strong>Bonne réponse !</strong> ':'<strong>Raté.</strong> ')+Q.expl;
+    fb.classList.add('show');
+    nextBtn.style.display='inline-flex';
+    nextBtn.textContent=idx===QUESTIONS.length-1?'Voir le score':'Suivante →';
+    renderProgress();
+  }
+  function advance(){idx++;show();}
+  tBtn.onclick=()=>pick(true);
+  fBtn.onclick=()=>pick(false);
+  nextBtn.onclick=advance;
+  show();
+})();
+
+/* ============ GAME 11 · MOTS-MÊLÉS ============ */
+(function(){
+  const gridEl=document.getElementById('wsearchGrid');
+  if(!gridEl)return;
+  const SIZE=12;
+  const WORDS=['MANDRIN','FORET','COUPLE','VITESSE','MARTEAU','EMBOUT','PERCUSSION','CARBURE'];
+  let grid=[],placements=[],found=new Set();
+
+  function init(){
+    grid=Array.from({length:SIZE},()=>Array(SIZE).fill(''));
+    placements=[];
+    found=new Set();
+    const dirs=[[0,1],[1,0],[1,1],[-1,1],[0,-1],[-1,0]];
+    for(const word of WORDS){
+      let placed=false;
+      for(let attempt=0;attempt<400 && !placed;attempt++){
+        const [dr,dc]=dirs[Math.floor(Math.random()*dirs.length)];
+        const r=Math.floor(Math.random()*SIZE);
+        const c=Math.floor(Math.random()*SIZE);
+        const endR=r+dr*(word.length-1);
+        const endC=c+dc*(word.length-1);
+        if(endR<0||endR>=SIZE||endC<0||endC>=SIZE)continue;
+        let ok=true;
+        for(let i=0;i<word.length;i++){
+          const cell=grid[r+dr*i][c+dc*i];
+          if(cell!==''&&cell!==word[i]){ok=false;break;}
+        }
+        if(!ok)continue;
+        for(let i=0;i<word.length;i++)grid[r+dr*i][c+dc*i]=word[i];
+        placements.push({word,r,c,dr,dc});
+        placed=true;
+      }
+    }
+    // Fill blanks
+    for(let r=0;r<SIZE;r++)for(let c=0;c<SIZE;c++){
+      if(grid[r][c]==='')grid[r][c]=String.fromCharCode(65+Math.floor(Math.random()*26));
+    }
+  }
+  function render(){
+    gridEl.innerHTML='';
+    gridEl.style.gridTemplateColumns=`repeat(${SIZE}, 30px)`;
+    for(let r=0;r<SIZE;r++)for(let c=0;c<SIZE;c++){
+      const cell=document.createElement('div');
+      cell.className='wsearch-cell';
+      cell.textContent=grid[r][c];
+      cell.dataset.r=r;cell.dataset.c=c;
+      cell.addEventListener('click',()=>cellClick(r,c));
+      gridEl.appendChild(cell);
+    }
+    // Mark already found cells
+    placements.forEach(p=>{
+      if(found.has(p.word)){
+        for(let i=0;i<p.word.length;i++){
+          const cell=gridEl.querySelector(`[data-r="${p.r+p.dr*i}"][data-c="${p.c+p.dc*i}"]`);
+          if(cell)cell.classList.add('found');
+        }
+      }
+    });
+    renderList();
+    updateStatus();
+  }
+  function renderList(){
+    const ul=document.getElementById('wsearchList');
+    ul.innerHTML='';
+    WORDS.forEach(w=>{
+      const li=document.createElement('li');
+      li.textContent=w;
+      if(found.has(w))li.classList.add('found');
+      ul.appendChild(li);
+    });
+  }
+  function updateStatus(){
+    document.getElementById('wsearchStatus').textContent=`${found.size} / ${WORDS.length} mots trouvés`;
+  }
+  let firstCell=null;
+  function cellClick(r,c){
+    const cell=gridEl.querySelector(`[data-r="${r}"][data-c="${c}"]`);
+    if(cell.classList.contains('found'))return;
+    if(!firstCell){
+      firstCell={r,c};
+      cell.classList.add('start');
+      showPreview();
+      return;
+    }
+    // Second click: validate line
+    const dr=Math.sign(r-firstCell.r),dc=Math.sign(c-firstCell.c);
+    const len=Math.max(Math.abs(r-firstCell.r),Math.abs(c-firstCell.c))+1;
+    // Must be straight line (h, v, or diag)
+    const isStraight=(firstCell.r===r||firstCell.c===c||Math.abs(r-firstCell.r)===Math.abs(c-firstCell.c));
+    if(!isStraight){clearPreview();firstCell=null;return;}
+    let letters='';
+    for(let i=0;i<len;i++){
+      letters+=grid[firstCell.r+dr*i][firstCell.c+dc*i];
+    }
+    const reversed=letters.split('').reverse().join('');
+    const match=WORDS.find(w=>(w===letters||w===reversed)&&!found.has(w));
+    if(match){
+      found.add(match);
+      // mark all cells of placement
+      const p=placements.find(p=>p.word===match);
+      for(let i=0;i<p.word.length;i++){
+        const cc=gridEl.querySelector(`[data-r="${p.r+p.dr*i}"][data-c="${p.c+p.dc*i}"]`);
+        if(cc){cc.classList.remove('start','preview');cc.classList.add('found');}
+      }
+      renderList();updateStatus();
+      if(window.reportDefiScore)window.reportDefiScore(11,(found.size/WORDS.length)*100);
+    }
+    clearPreview();
+    firstCell=null;
+  }
+  function showPreview(){
+    // Nothing for now; preview only on hover would need extra wiring
+  }
+  function clearPreview(){
+    gridEl.querySelectorAll('.start,.preview').forEach(el=>el.classList.remove('start','preview'));
+  }
+  document.getElementById('wsearchReset').addEventListener('click',()=>{init();render();});
+  init();render();
+})();
+
+/* ============ GAME 12 · LE TRI ============ */
+(function(){
+  const pool=document.getElementById('triPool');
+  if(!pool)return;
+  const CATS=[
+    {key:'bois',label:'Bois',items:['Foret hélicoïdal','Vis à bois TX','Vis terrasse inox','Embout PZ2']},
+    {key:'metal',label:'Métal',items:['Foret HSS','Vis Parker','Vis à tôle','Pointeau']},
+    {key:'beton',label:'Béton',items:['Foret SDS','Cheville à frapper','Mèche carbure','Mode percussion']}
+  ];
+  const ALL=[];
+  CATS.forEach(c=>c.items.forEach(i=>ALL.push({label:i,cat:c.key})));
+  // shuffle
+  for(let i=ALL.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ALL[i],ALL[j]]=[ALL[j],ALL[i]];}
+
+  const catsEl=document.getElementById('triCats');
+  const fb=document.getElementById('triFb');
+  const checkBtn=document.getElementById('triCheck');
+  const resetBtn=document.getElementById('triReset');
+  let placement={}; // label → catKey
+  let selected=null;
+
+  function render(){
+    pool.innerHTML='';catsEl.innerHTML='';
+    ALL.forEach(it=>{
+      if(placement[it.label])return;
+      const el=createItem(it);
+      pool.appendChild(el);
+    });
+    CATS.forEach(c=>{
+      const div=document.createElement('div');
+      div.className='tri-cat';div.dataset.cat=c.key;
+      div.innerHTML=`<div class="tri-cat-label">${c.label}</div><div class="tri-cat-items"></div>`;
+      div.addEventListener('click',()=>{
+        if(!selected)return;
+        placement[selected.label]=c.key;
+        selected=null;
+        render();
+        updateReady();
+      });
+      const itemsBox=div.querySelector('.tri-cat-items');
+      ALL.forEach(it=>{
+        if(placement[it.label]===c.key){
+          const el=createItem(it);
+          itemsBox.appendChild(el);
+        }
+      });
+      catsEl.appendChild(div);
+    });
+  }
+  function createItem(it){
+    const el=document.createElement('button');
+    el.className='tri-item';el.textContent=it.label;el.dataset.label=it.label;
+    el.addEventListener('click',ev=>{
+      ev.stopPropagation();
+      if(selected&&selected.label===it.label){selected=null;el.classList.remove('sel');}
+      else{
+        if(selected){const prev=document.querySelector('.tri-item.sel');if(prev)prev.classList.remove('sel');}
+        selected=it;el.classList.add('sel');
+      }
+      updateReady();
+    });
+    return el;
+  }
+  function updateReady(){
+    document.querySelectorAll('.tri-cat').forEach(c=>{
+      c.classList.toggle('target-ready',!!selected);
+    });
+  }
+  function check(){
+    let correct=0;
+    document.querySelectorAll('.tri-cat').forEach(cat=>{
+      const catKey=cat.dataset.cat;
+      cat.querySelectorAll('.tri-item').forEach(el=>{
+        const item=ALL.find(i=>i.label===el.dataset.label);
+        if(!item)return;
+        if(item.cat===catKey){el.classList.add('right');correct++;}
+        else{el.classList.add('wrong');}
+        el.disabled=true;
+      });
+    });
+    pool.querySelectorAll('.tri-item').forEach(el=>el.classList.add('wrong'));
+    const total=ALL.length;
+    fb.innerHTML=`<strong>${correct} / ${total} items bien rangés.</strong> ${correct===total?'Sans-faute !':correct>=total*0.7?'Bien joué, quelques erreurs seulement.':'Plusieurs erreurs — relis les modules 5 (forets) et 6 (vis).'}`;
+    fb.classList.add('show');
+    checkBtn.style.display='none';
+    resetBtn.style.display='inline-flex';
+    if(window.reportDefiScore)window.reportDefiScore(12,(correct/total)*100);
+  }
+  function reset(){
+    placement={};selected=null;
+    fb.classList.remove('show');
+    checkBtn.style.display='inline-flex';
+    resetBtn.style.display='none';
+    render();
+  }
+  checkBtn.addEventListener('click',check);
+  resetBtn.addEventListener('click',reset);
+  render();
 })();
 
 /* ============ GAME 01 · QUIZ ÉCLAIR ============ */
